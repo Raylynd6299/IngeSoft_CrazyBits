@@ -4,16 +4,17 @@ import pymysql as sql
 import sys
 import hashlib
 import models
+import configs
 
 
 db = None
 cursor = None;
 
 try:
-    db = sql.connect(host="localhost",
-                     user="root",
-                     password="Cocacola09",
-                     db="IngSoftProy1"
+    db = sql.connect(host=configs.HOST,
+                     user=configs.UsuarioBaseDatos,
+                     password=configs.PASSWORD,
+                     db=configs.DB
                     )
     cursor = db.cursor()
 except Exception as e:

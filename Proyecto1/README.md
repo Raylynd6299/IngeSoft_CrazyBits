@@ -17,7 +17,7 @@ Este estara desarrollando usando:
 	- pymysql
 	Para instalar el paquete usar:
 	```Bash
-		pip3 install pymysql
+		pip3 install pymysql --upgrade
 	```
 
 

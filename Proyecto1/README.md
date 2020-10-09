@@ -8,7 +8,7 @@ Este repo esta construido para dar seguimiento a su desarrollo
 
 ## BackEnd
 Este estara desarrollando usando:
-+ Python
++ Python 3
 	- Hug
 	Para instalar el paquete usar:
 	```Bash

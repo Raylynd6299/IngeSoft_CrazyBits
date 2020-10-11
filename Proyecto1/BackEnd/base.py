@@ -56,7 +56,7 @@ def insertarUsuario(nombre = "",apellidoPaterno = "",apellidoMaterno = "",email 
         print("Valor vacio")
         return 404
     if (Tipo == 1 and Delegacion == ""):
-        print("Valor vacio")
+        print("Valor Delegacion")
         return 404          
     
     queryInsertUser = f"""insert into Usuario (nombre,apellidoPaterno,apellidoMaterno,email,FeNa,Password,CURP,Tipo,Delegacion)
@@ -131,22 +131,7 @@ def insertarReporte(status=0,fecha="",descripcion="",fotos="",calle="",numero=0,
         print("Error al Registrar Datos")
         db.rollback()
         return 404
-    
-def cambiarEstado(estadoSig,idReporte,emailUser):
-    if idReporte == 0 or emailUser == "" or estadoSig==0:
-        print("Error en los parametros")
-        return 404
-    updateEstadoRegistro = f"""update Reporte set status = {estadoSig} where idReport = {idReporte} and emailUser = '{emailUser}' ; """
-    try:
-        cursor.execute(updateEstadoRegistro)
-        print("Estado Modificado con Exito!!")
-        db.commit()
-        return 201
-    except Exception as e:
-        print("Error al Cambiar Estado")
-        db.rollback()
-        return 404
-    
+       
 def obtenerReportesUsuario(emailUser):
     if emailUser == "":
         print("Error en el email de Usario")
@@ -164,11 +149,11 @@ def obtenerReportesUsuario(emailUser):
         return 201,ReportesUsuario
     except Exception as e:
         print("Error al obtener Datos")
-        return 404
+        return 404,[{}]
     
 def obtenerReporte(idReporte):
     if idReporte == 0:
-        print("Error en el idReporte")
+        print("Error en el idReport")
         return 404
     queryobtenerReporte = f"select * from Reporte where idReport = {idReporte}"
     try:
@@ -178,13 +163,13 @@ def obtenerReporte(idReporte):
         return 201,Reporte
     except Exception as e:
         print("Error al obtener Reporte")
-        return 404
+        return 404,{}
     
-def obtenerUsuario(emailUser):
-    if emailUser == "":
-        print("Error en el email")
+def obtenerUsuario(emailUser,Password):
+    if emailUser == "" or Password == "":
+        print("Error en el email o password")
         return 404
-    queryobtenerUsuario = f"select * from Usuario where email = '{emailUser}';"
+    queryobtenerUsuario = f"select * from Usuario where email = '{emailUser}' and Password = '{Password}';"
     try:
         cursor.execute(queryobtenerUsuario)
         row = cursor.fetchone()
@@ -192,7 +177,7 @@ def obtenerUsuario(emailUser):
         return 201,Usuario
     except Exception as e:
         print("Error al obtener Usuario")
-        return 404
+        return 404,{}
     
 def obtenerReportesDelegacion(Delegacion):
     if Delegacion == "":
@@ -260,17 +245,52 @@ def obtenerReportesDelegacionFecha(Delegacion,Fecha):
     except Exception as e:
         print("Error al obtener Datos")
         return 404
+   
+def cambiarEstado(estadoSig,idReporte):
+    if idReporte == 0 or estadoSig==0:
+        print("Error en los parametros")
+        return 404
+    updateEstadoRegistro = f"""update Reporte set status = {estadoSig} where idReport = {idReporte} ; """
+    try:
+        cursor.execute(updateEstadoRegistro)
+        print("Estado Modificado con Exito!!")
+        db.commit()
+        return 201
+    except Exception as e:
+        print("Error al Cambiar Estado")
+        db.rollback()
+        return 404
     
-#if __name__ == '__main__':
-    #crearTablaUsuarios()
-    #insertarUsuario("Raymundo","Pulido","Bejarano","rayescomed@gmail.com","1999-02-06",hash_string("Cocacola09"),"PUBR990206HDFLJY07",0)
-    #crearTablaReporte()
-    #insertarReporte(0,"2020-09-22","Dani es un amor","Home/path/foto.jpg","Calle mexico",32,"calle mexico","calle mexico","Alvaro Obregon","Providencia2","57100","rayescomed@gmail.com")
-    #cambiarEstado(6,2,"rayescomed@gmail.com")
-    #obtenerUsuario("rayescomed@gmail.com")
-    #obtenerReporte(9)
-    #_,repos = obtenerReportesDelegacion("GAM")
-    #_,repos = obtenerReportesDelegacionColonia("Alvaro Obregon","providencia2")
-    #_,repos = obtenerReportesDelegacionEstatus("GAM",0)
-    #_,repos = obtenerReportesDelegacionFecha("GAM","2020-10-09")
-    #for repo in repos: print(repo) 
+def ultimoReporte(emailUser):
+    _,reporte = obtenerReportesUsuario(emailUser)
+    reporte = reporte[0]
+    return reporte.idReport    
+
+def guardarfotos(idReport,namefotos):
+    queryObtenerNames = f"select fotos from Reporte where idReport = {idReport};"
+    fotosName = ""
+    try:
+        cursor.execute(queryObtenerNames)
+        row = cursor.fetchone()
+        fotosName = row[0]
+    except Exception as e:
+        pass
+    
+    if fotosName == "":
+        namefotos = namefotos
+    else:
+        namefotos = namefotos + " " + fotosName
+        
+    queryGuardarFoto = f"update Reporte set fotos = '{namefotos}' where idReport = {idReport};"
+    try:
+        cursor.execute(queryGuardarFoto)
+        print("Estado Modificado con Exito!!")
+        db.commit()
+        return 201
+    except Exception as e:
+        print("Error al agregar las fotos")
+        db.rollback()
+        return 404
+    
+    
+

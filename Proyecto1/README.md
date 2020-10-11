@@ -19,6 +19,41 @@ Este estara desarrollando usando:
 	```Bash
 		pip3 install pymysql --upgrade
 	```
+### Indicaciones de Acoplamiento
+Debe definirse un archivo ***configs.py***, donde deberan encontrarse las siguientes "constantes":
 
+```Python3
+	#Todas son strings
+	HOST = <DireccionHost>
+	UsuarioBaseDatos = <NombreUsuario>
+	PASSWORD = <ContraseñaUsuario>
+	DB=<NombreDeBaseDeDatosLocal>
+	NAMEFILE=<NombreDeImagenPruebas>
+```
+el dicho archivo de estar en una ubicacion paralela a los demas archivos
+
+### Indicaciones de Uso:
+Si es la primera vez que usa la ***API***, una vez cree la Base de Datos SQL, en la que guste almacenar la informacion, y realice las indicaciones anteriores,
+
+Ejecute el siguiente comandos en su terminal
+
+```Bash 
+	python3 
+```
+una vez el interprete de python este abierto ejecute lo siguiente:
+```python3
+	import base
+	
+	base.crearTablaUsuarios()
+	base.crearTablaReporte()
+```
+Esto creara las tablas pre-descritas para el funcionamiento del modulo en la base de datos incicada en el archivo ***configs.py*** escrito anteriormente por usted
+
+Para levantar el API-Rest escrita en el archivo ***APIBAches.py*** use:
+
+```Bash
+	hug -f APIBAches.py -p9000
+```
+Esto levatara el API, a la escucha en el puerto ***9000*** de su ***HOST*** escrito en el archivo ***configs.py***
 
 ## FrontEnd

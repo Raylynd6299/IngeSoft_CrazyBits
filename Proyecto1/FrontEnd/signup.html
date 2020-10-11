@@ -39,13 +39,8 @@
 		<div class="py-5 text-center">
 			<img class="d-block mx-auto mb-4" src="./assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
 			<h2>Reporte de baches</h2>
-			<p class="lead">Nulla auctor lectus felis, eu aliquet erat condimentum et.
-				Donec at odio faucibus, accumsan lectus aliquam, posuere tortor. Aliquam tristique nibh lacus,
-				id suscipit arcu iaculis in. Vestibulum ut orci lorem. Ut tincidunt tellus eu neque consequat,
-				ut pretium justo auctor. Vivamus porttitor, quam nec faucibus gravida, orci arcu suscipit erat,
-				nec venenatis nisi enim non sapien. In pharetra quam quis pellentesque rhoncus. Integer efficitur
-				commodo felis, at tempus tortor pretium vestibulum. Morbi quis lectus sit amet nisl sodales
-				bibendum.
+			<p class="lead">Para acceder a este sistema es necesario que se registre proporcionando los
+				datos solicitados a continuación. 
 			</p>
 		</div>
 
@@ -100,62 +95,62 @@
                 </form>
             </div> -->
 			<div class="col-md-12 order-md-1">
-				<h4 class="mb-3">Billing address</h4>
+				<h4 class="mb-3">Registrar cuenta</h4>
 				<form class="needs-validation" novalidate>
 					<div class="row">
 						<div class="col-md-4 mb-3">
-							<label for="firstName">Nombre</label>
-							<input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+							<label for="nombre">Nombre</label>
+							<input type="text" class="form-control" id="nombre" required>
 							<div class="invalid-feedback">
-								Valid first name is required.
+								Campo requerido.
 							</div>
 						</div>
 						<div class="col-md-4 mb-3">
-							<label for="lastName">Apellido Paterno</label>
-							<input type="text" class="form-control" id="aPaterno" placeholder="" value="" required>
+							<label for="apellidoPat">Apellido Paterno</label>
+							<input type="text" class="form-control" id="aPaterno" required>
 							<div class="invalid-feedback">
-								Valid last name is required.
+								Campo requerido.
 							</div>
 						</div>
 						<div class="col-md-4 mb-3">
-							<label for="lastName">Apellido Materno</label>
-							<input type="text" class="form-control" id="amaterno" placeholder="" value="" required>
+							<label for="apellidoMat">Apellido Materno</label>
+							<input type="text" class="form-control" id="amaterno" required>
 							<div class="invalid-feedback">
-								Valid last name is required.
+								Campo requerido.
 							</div>
 						</div>
 					</div>
 
 					<div class="row">
 						<div class="col-md-6 mb-3">
-							<label for="email">Email</label>
-							<input type="email" class="form-control" id="email" placeholder="you@example.com">
+							<label for="email">Correo electrónico</label>
+							<input type="email" class="form-control" id="email" placeholder="usuario@ejemplo.com" required>
 							<div class="invalid-feedback">
-								Please enter a valid email address for shipping updates.
+								Campo requerido.
 							</div>
 						</div>
 						<div class="col-md-6 mb-3">
-							<label for="email">Telefono</label>
-							<input type="text" class="form-control" id="phone">
+							<label for="telefono">Teléfono</label>
+							<input type="text" class="form-control" id="telefono" required>
 							<div class="invalid-feedback">
-								Please enter a valid email address for shipping updates.
+								Campo requerido.
 							</div>
 						</div>
 					</div>
 
 					<div class="row">
 						<div class="col-md-6 mb-3">
-							<label for="password">Password</label>
-							<input type="password" class="form-control" id="password" placeholder="Password">
+							<label for="password">Contraseña</label>
+							<input type="password" class="form-control" id="password" required>
 							<div class="invalid-feedback">
-								Please enter a valid email address for shipping updates.
+								Campo requerido.
 							</div>
 						</div>
 						<div class="col-md-6 mb-3">
-							<label for="password">Verify Password</label>
-							<input type="password" class="form-control" id="verPassword">
+							<label for="password">Confirmar contraseña</label>
+							<input type="password" class="form-control" id="verPassword" required>
 							<div class="invalid-feedback">
-								Please enter a valid email address for shipping updates.
+								Campo requerido.
 							</div>
 						</div>
 					</div>
@@ -163,14 +158,14 @@
 
 
 					<div class="mb-3">
-						<label for="address">Address</label>
-						<input type="text" class="form-control" id="address" placeholder="1234 Main St" required>
+						<label for="alcaldia">Alcaldía</label>
+						<input type="text" class="form-control" id="alcaldia" placeholder="Gustavo A. Madero" required>
 						<div class="invalid-feedback">
-							Please enter your shipping address.
+							Campo requerido.
 						</div>
 					</div>
 
-					<div class="mb-3">
+					<!--<div class="mb-3">
 						<label for="address2">Address 2 <span class="text-muted">(Optional)</span></label>
 						<input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
 					</div>
@@ -203,15 +198,26 @@
 								Zip code required.
 							</div>
 						</div>
+					</div>-->
+					<div class="mb-3">
+						<label for="fechaNacimiento">Fecha de nacimiento</label>
+						<input type="date" class="form-control" id="fechaNa" required>
+						<div class="invalid-feedback">
+							Campo requerido.
+						</div>
 					</div>
+					
 
 					<div class="mb-3">
-						<label for="address2">CURP<span class="text-muted"></span></label>
-						<input type="text" class="form-control" id="address2" placeholder="Clave Unica de Registro Poblacional">
+						<label for="curp">CURP<span class="text-muted"></span></label>
+						<input type="text" class="form-control" id="curp" placeholder="Clave Unica de Registro Poblacional" required>
+						<div class="invalid-feedback">
+							Campo requerido.
+						</div>
 					</div>
 
 					<hr class="mb-4">
-					<button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+					<button class="btn btn-primary btn-lg btn-block" type="submit">Registrar</button>
 				</form>
 			</div>
 		</div>

@@ -1,242 +1,184 @@
 <!doctype html>
 <html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="description" content="">
+		<meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+		<meta name="generator" content="Jekyll v4.1.1">
+		<title>Registrar usuario</title>
 
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta name="description" content="">
-	<meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-	<meta name="generator" content="Jekyll v4.1.1">
-	<title>Checkout example · Bootstrap</title>
+		<link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/checkout/">
 
-	<link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/checkout/">
+		<!-- Bootstrap core CSS -->
+		<link href="./assets/dist/css/bootstrap.min.css" rel="stylesheet">
 
-	<!-- Bootstrap core CSS -->
-	<link href="./assets/dist/css/bootstrap.min.css" rel="stylesheet">
-
-	<style>
-		.bd-placeholder-img {
-			font-size: 1.125rem;
-			text-anchor: middle;
-			-webkit-user-select: none;
-			-moz-user-select: none;
-			-ms-user-select: none;
-			user-select: none;
-		}
-
-		@media (min-width: 768px) {
-			.bd-placeholder-img-lg {
-				font-size: 3.5rem;
+		<style>
+			.bd-placeholder-img {
+				font-size: 1.125rem;
+				text-anchor: middle;
+				-webkit-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
+				user-select: none;
 			}
-		}
-	</style>
-	<!-- Custom styles for this template -->
-	<link href="./css/form-validation.css" rel="stylesheet">
-</head>
 
-<body class="bg-light">
-	<div class="container">
-		<div class="py-5 text-center">
-			<img class="d-block mx-auto mb-4" src="./assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
-			<h2>Reporte de baches</h2>
-			<p class="lead">Para acceder a este sistema es necesario que se registre proporcionando los
-				datos solicitados a continuación. 
-			</p>
-		</div>
+			@media (min-width: 768px) {
+				.bd-placeholder-img-lg {
+					font-size: 3.5rem;
+				}
+			}
+		</style>
+		<!-- Custom styles for this template -->
+		<link href="./css/form-validation.css" rel="stylesheet">
+	</head>
 
-		<div class="row">
-			<!-- <div class="col-md-4 order-md-2 mb-4">
-                <h4 class="d-flex justify-content-between align-items-center mb-3">
-                    <span class="text-muted">Your cart</span>
-                    <span class="badge badge-secondary badge-pill">3</span>
-                </h4>
-                <ul class="list-group mb-3">
-                    <li class="list-group-item d-flex justify-content-between lh-condensed">
-                        <div>
-                            <h6 class="my-0">Product name</h6>
-                            <small class="text-muted">Brief description</small>
-                        </div>
-                        <span class="text-muted">$12</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between lh-condensed">
-                        <div>
-                            <h6 class="my-0">Second product</h6>
-                            <small class="text-muted">Brief description</small>
-                        </div>
-                        <span class="text-muted">$8</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between lh-condensed">
-                        <div>
-                            <h6 class="my-0">Third item</h6>
-                            <small class="text-muted">Brief description</small>
-                        </div>
-                        <span class="text-muted">$5</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between bg-light">
-                        <div class="text-success">
-                            <h6 class="my-0">Promo code</h6>
-                            <small>EXAMPLECODE</small>
-                        </div>
-                        <span class="text-success">-$5</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between">
-                        <span>Total (USD)</span>
-                        <strong>$20</strong>
-                    </li>
-                </ul>
-
-                <form class="card p-2">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Promo code">
-                        <div class="input-group-append">
-                            <button type="submit" class="btn btn-secondary">Redeem</button>
-                        </div>
-                    </div>
-                </form>
-            </div> -->
-			<div class="col-md-12 order-md-1">
-				<h4 class="mb-3">Registrar cuenta</h4>
-				<form class="needs-validation" novalidate>
-					<div class="row">
-						<div class="col-md-4 mb-3">
-							<label for="nombre">Nombre</label>
-							<input type="text" class="form-control" id="nombre" required>
-							<div class="invalid-feedback">
-								Campo requerido.
-							</div>
-						</div>
-						<div class="col-md-4 mb-3">
-							<label for="apellidoPat">Apellido Paterno</label>
-							<input type="text" class="form-control" id="aPaterno" required>
-							<div class="invalid-feedback">
-								Campo requerido.
-							</div>
-						</div>
-						<div class="col-md-4 mb-3">
-							<label for="apellidoMat">Apellido Materno</label>
-							<input type="text" class="form-control" id="amaterno" required>
-							<div class="invalid-feedback">
-								Campo requerido.
-							</div>
-						</div>
-					</div>
-
-					<div class="row">
-						<div class="col-md-6 mb-3">
-							<label for="email">Correo electrónico</label>
-							<input type="email" class="form-control" id="email" placeholder="usuario@ejemplo.com" required>
-							<div class="invalid-feedback">
-								Campo requerido.
-							</div>
-						</div>
-						<div class="col-md-6 mb-3">
-							<label for="telefono">Teléfono</label>
-							<input type="text" class="form-control" id="telefono" required>
-							<div class="invalid-feedback">
-								Campo requerido.
-							</div>
-						</div>
-					</div>
-
-					<div class="row">
-						<div class="col-md-6 mb-3">
-							<label for="password">Contraseña</label>
-							<input type="password" class="form-control" id="password" required>
-							<div class="invalid-feedback">
-								Campo requerido.
-							</div>
-						</div>
-						<div class="col-md-6 mb-3">
-							<label for="password">Confirmar contraseña</label>
-							<input type="password" class="form-control" id="verPassword" required>
-							<div class="invalid-feedback">
-								Campo requerido.
-							</div>
-						</div>
-					</div>
-
-
-
-					<div class="mb-3">
-						<label for="alcaldia">Alcaldía</label>
-						<input type="text" class="form-control" id="alcaldia" placeholder="Gustavo A. Madero" required>
-						<div class="invalid-feedback">
-							Campo requerido.
-						</div>
-					</div>
-
-					<!--<div class="mb-3">
-						<label for="address2">Address 2 <span class="text-muted">(Optional)</span></label>
-						<input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
-					</div>
-
-					<div class="row">
-						<div class="col-md-5 mb-3">
-							<label for="country">Country</label>
-							<select class="custom-select d-block w-100" id="country" required>
-								<option value="">Choose...</option>
-								<option>United States</option>
-							</select>
-							<div class="invalid-feedback">
-								Please select a valid country.
-							</div>
-						</div>
-						<div class="col-md-4 mb-3">
-							<label for="state">State</label>
-							<select class="custom-select d-block w-100" id="state" required>
-								<option value="">Choose...</option>
-								<option>California</option>
-							</select>
-							<div class="invalid-feedback">
-								Please provide a valid state.
-							</div>
-						</div>
-						<div class="col-md-3 mb-3">
-							<label for="zip">Zip</label>
-							<input type="text" class="form-control" id="zip" placeholder="" required>
-							<div class="invalid-feedback">
-								Zip code required.
-							</div>
-						</div>
-					</div>-->
-					<div class="mb-3">
-						<label for="fechaNacimiento">Fecha de nacimiento</label>
-						<input type="date" class="form-control" id="fechaNa" required>
-						<div class="invalid-feedback">
-							Campo requerido.
-						</div>
-					</div>
-					
-
-					<div class="mb-3">
-						<label for="curp">CURP<span class="text-muted"></span></label>
-						<input type="text" class="form-control" id="curp" placeholder="Clave Unica de Registro Poblacional" required>
-						<div class="invalid-feedback">
-							Campo requerido.
-						</div>
-					</div>
-
-					<hr class="mb-4">
-					<button class="btn btn-primary btn-lg btn-block" type="submit">Registrar</button>
-				</form>
+	<body class="bg-light">
+		<nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
+			<a class="navbar-brand" href="#">
+				<img src="" width="30" height="30" alt="" loading="lazy">
+			</a>
+			<a class="navbar-brand" href="#">Reporte de Baches</a>
+		</nav>
+		<div class="container">
+			<div class="py-5 text-center">
+				<br>
+				<img class="d-block mx-auto mb-4" src="./assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+				<h2>Reporte de baches</h2>
+				<p class="lead">Para acceder a este sistema es necesario que se registre proporcionando los
+					datos solicitados a continuación. 
+				</p>
 			</div>
+
+			<div class="row">
+				<div class="col-md-12 order-md-1">
+					<h4 class="mb-3">Registrar cuenta</h4>
+					<form class="needs-validation" novalidate>
+						<div class="row">
+							<div class="col-md-4 mb-3">
+								<label for="nombre">Nombre</label>
+								<input type="text" class="form-control" id="nombre" required>
+								<div class="invalid-feedback">
+									Campo requerido.
+								</div>
+							</div>
+							<div class="col-md-4 mb-3">
+								<label for="apellidoPat">Apellido Paterno</label>
+								<input type="text" class="form-control" id="aPaterno" required>
+								<div class="invalid-feedback">
+									Campo requerido.
+								</div>
+							</div>
+							<div class="col-md-4 mb-3">
+								<label for="apellidoMat">Apellido Materno</label>
+								<input type="text" class="form-control" id="aMaterno" required>
+								<div class="invalid-feedback">
+									Campo requerido.
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6 mb-3">
+								<label for="fechaNacimiento">Fecha de nacimiento</label>
+								<input type="text" class="form-control" name="input" placeholder="YYYY-MM-DD" required 
+								pattern="(?:19|20)\[0-9\]{2}-(?:(?:0\[1-9\]|1\[0-2\])-(?:0\[1-9\]|1\[0-9\]|2\[0-9\])|(?:(?!02)(?:0\[1-9\]|1\[0-2\])-(?:30))|(?:(?:0\[13578\]|1\[02\])-31))" 
+								title="Enter a date in this format YYYY-MM-DD"/>
+								<div class="invalid-feedback">
+									Campo requerido.
+								</div>
+							</div>
+		
+							<div class="col-md-6 mb-3">
+								<label for="curp">CURP<span class="text-muted"></span></label>
+								<input type="text" class="form-control" id="curp" placeholder="Clave Unica de Registro Poblacional" required>
+								<div class="invalid-feedback">
+									Campo requerido.
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6 mb-3">
+								<label for="fechaNacimiento">Alcaldía</label>
+								<select class="custom-select d-block w-100" id="alcaldia" required>
+									<option value="">Elegir...</option>
+									<option>Álvaro Obregón</option>
+									<option>Azcapotzalco</option>
+									<option>Benito Juárez</option>
+									<option>Coyoacán</option>
+									<option>Cuajimalpa de Morelos</option>
+									<option>Cuauhtémoc</option>
+									<option>Gustavo A. Madero</option>
+									<option>Iztacalco</option>
+									<option>Iztapalapa</option>
+									<option>La Magdalena Contreras</option>
+									<option>Miguel Hidalgo</option>
+									<option>Milpa Alta</option>
+									<option>Tlalpan</option>
+									<option>Tláhuac</option>
+									<option>Venustiano Carranza</option>
+									<option>Xochimilco</option>
+								</select>
+								<div class="invalid-feedback">
+									Campo requerido.
+								</div>
+							</div>
+		
+							<div class="col-md-6 mb-3">
+								<label for="curp">Tipo de usuario<span class="text-muted"></span></label>
+								<select class="custom-select d-block w-100" id="tipo" required>
+									<option value="">Elegir...</option>
+									<option>Ciudadano</option>
+									<option>Gestor</option>
+								</select>
+								<div class="invalid-feedback">
+									Campo requerido.
+								</div>
+							</div>
+						</div>
+							<div class="mb-3">
+								<label for="email">Correo electrónico</label>
+								<input type="email" class="form-control" id="email" placeholder="usuario@ejemplo.com" required>
+								<div class="invalid-feedback">
+									Campo requerido.
+								</div>
+							</div>
+
+						<div class="row">
+							<div class="col-md-6 mb-3">
+								<label for="password">Contraseña</label>
+								<input type="password" class="form-control" id="password" required>
+								<div class="invalid-feedback">
+									Campo requerido.
+								</div>
+							</div>
+							<div class="col-md-6 mb-3">
+								<label for="password">Confirmar contraseña</label>
+								<input type="password" class="form-control" id="verPassword" required>
+								<div class="invalid-feedback">
+									Campo requerido.
+								</div>
+							</div>
+						</div>
+						<hr class="mb-4">
+						<button class="btn btn-primary btn-lg btn-block" type="submit">Registrar</button>
+					</form>
+				</div>
+			</div>
+
+			<footer class="my-5 pt-5 text-muted text-center text-small">
+				<p class="mb-1">&copy; 2017-2020 Company Name</p>
+				<ul class="list-inline">
+					<li class="list-inline-item"><a href="#">Privacy</a></li>
+					<li class="list-inline-item"><a href="#">Terms</a></li>
+					<li class="list-inline-item"><a href="#">Support</a></li>
+				</ul>
+			</footer>
 		</div>
-
-		<footer class="my-5 pt-5 text-muted text-center text-small">
-			<p class="mb-1">&copy; 2017-2020 Company Name</p>
-			<ul class="list-inline">
-				<li class="list-inline-item"><a href="#">Privacy</a></li>
-				<li class="list-inline-item"><a href="#">Terms</a></li>
-				<li class="list-inline-item"><a href="#">Support</a></li>
-			</ul>
-		</footer>
-	</div>
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-		crossorigin="anonymous"></script>
-	<script>window.jQuery || document.write('<script src="../assets/js/vendor/jquery.slim.min.js"><\/script>')</script>
-	<script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
-	<script src="./js/form-valdiation.js"></script>
-</body>
-
+		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+			integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+			crossorigin="anonymous"></script>
+		<script>window.jQuery || document.write('<script src="../assets/js/vendor/jquery.slim.min.js"><\/script>')</script>
+		<script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+		<script src="./js/form-valdiation.js"></script>
+	</body>
 </html>

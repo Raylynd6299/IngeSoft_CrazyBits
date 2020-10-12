@@ -14,6 +14,7 @@ def AltaReporte(status:hug.types.number,fecha:hug.types.text,descripcion:hug.typ
                 calle:hug.types.text,numero:hug.types.number,entreCalle1:hug.types.text,
                 entreCalle2:hug.types.text,Delegacion:hug.types.text,colonia:hug.types.text,
                 CP:hug.types.text,emailUser:hug.types.text):
+    global USUARIOLOG
     
     statusBase = base.insertarReporte(status=status,fecha=fecha,descripcion=descripcion,fotos="",calle=calle,numero=numero,
                          entreCalle1=entreCalle1,entreCalle2=entreCalle2,Delegacion=Delegacion,colonia=colonia,CP=CP,emailUser=emailUser)
@@ -22,6 +23,7 @@ def AltaReporte(status:hug.types.number,fecha:hug.types.text,descripcion:hug.typ
 
 @hug.post("/SubirFotos")
 def SubirFotos(body):
+    global USUARIOLOG
     #Se loguea el usuario
     #Se guarda el Reporte
     #Se envian las imagenes
@@ -33,17 +35,21 @@ def SubirFotos(body):
     except Exception as e:
         pass
     
-    archivo = list(body) 
-    extension = archivo.strip().split(".")[1]
+    archivos = list(body) 
+    extension = archivos[0].strip().split(".")[1]
     
     n = os.popen(f'ls ./Reportes/Reporte{idReport}/').read()
-    n = n.strip().split(" ")
-    numArchivo = len(n)
-            
+    n = n.strip()
+    if n != "":
+        n = n.split(" ")
+        numArchivo = len(n)
+    else:
+        numArchivo = 0    
+
     nameArchivo= f"Reporte{idReport}-{numArchivo}.{extension}"
     
     with open(f"Reportes/Reporte{idReport}/"+nameArchivo,"wb") as archivo:
-        archivo.write(body[archivo])
+        archivo.write(body[archivos[0]])
     
     statusBase = base.guardarfotos(idReport,nameArchivo)
     
@@ -53,6 +59,7 @@ def SubirFotos(body):
 def AltaUsuario(nombre:hug.types.text,apellidoPaterno:hug.types.text,apellidoMaterno:hug.types.text,
                 email:hug.types.text,FeNa:hug.types.text,Password:hug.types.text,
                 CURP:hug.types.text,Tipo:hug.types.number,body):
+    global USUARIOLOG
     if(Tipo == 1):
         Delegacion = body.get("Delegacion")
         if Delegacion == None:
@@ -74,6 +81,7 @@ def AltaUsuario(nombre:hug.types.text,apellidoPaterno:hug.types.text,apellidoMat
 
 @hug.get("/ObtenerUsuario",example="email=Hola@gmail.com&Password=Hola")
 def ObtenerUsuario(email:hug.types.text,Password:hug.types.text):
+    global USUARIOLOG
     if email == "" or Password == "":
         return {"status":404,"message":"El Usuario necesita todos los parametro"}
     statusBase,Usuario = base.obtenerUsuario(emailUser=email,Password=base.hash_string(Password))
@@ -81,7 +89,7 @@ def ObtenerUsuario(email:hug.types.text,Password:hug.types.text):
         Usuario = Usuario.__dict__
         del Usuario["Password"]
         del Usuario["CURP"]
-        USUARIOLOG = email
+    USUARIOLOG = email
     return {"status":statusBase,"message":"Usuario obtenido con Exito" if statusBase == 201  else "Error al obtener el Usuario","Usuario":Usuario}
  
 @hug.get("/ObtenerReporte",example="idReport=10")
@@ -111,6 +119,7 @@ def ObtenerReportesUsuario(emailUser:hug.types.text):
 
 @hug.get("/AdiosUsuario")
 def AdiosUsuario():
+    global USUARIOLOG
     USUARIOLOG = ""
     return {"status":201,"message":"Se cerro sesion correctamente"}
     

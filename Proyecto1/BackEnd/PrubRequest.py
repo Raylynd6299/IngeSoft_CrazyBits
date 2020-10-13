@@ -17,18 +17,18 @@ def AltaReporte_Test():
                                                             "Delegacion":"GAM",
                                                             "colonia":"Holaaa",
                                                             "CP":"12345",
-                                                            "emailUser":"Corro@gmail.com"
+                                                            "emailUser":"correoprueba2@gmail.com"
                                                             }).json())
     
 def AltaUsuario_Test():
     print(requests.post('http://localhost:9000/AltaUsuario',data={"nombre":"Prueba",
                                                                   "apellidoPaterno":"prueba2",
                                                                   "apellidoMaterno":"prueba3",
-                                                                  "email":"correoprueba@gmail.com",
+                                                                  "email":"correoprueba2@gmail.com",
                                                                   "FeNa":"1999-12-31",
                                                                   "Password":"Passssss",
                                                                   "CURP":"CURPPPPPPPPPPPPP",
-                                                                  "Tipo":1,
+                                                                  "Tipo":0,
                                                                   "Delegacion":"GAM"
                                                             }).json())
 
@@ -52,5 +52,5 @@ def ObtenerFotos_Test():
     print(result.status_code)
     
 if __name__ == '__main__':
-    pass
+    SubirFotos_Test()
     

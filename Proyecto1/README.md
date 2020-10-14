@@ -59,9 +59,21 @@ Esto levatara el API, a la escucha en el puerto ***9000*** de su ***HOST*** escr
 ## FrontEnd
 Se desarrolla con Reactjs, para acceder al desarrollo del FrontEnd, se debe tener instalado nodejs, se recomienda la versión LTS.
 
+Se utilizara el gestor de paquetes ***npm*** para este tutorial en caso de usar ***yarn*** buscar su simil en este gestor de paquetes.
+
+### Instalar Dependencias
 Una vez instalado se accede a la carpeta crazybits se ejecuta el siguiente comando:
 ```Bash
 	cd crazybits
 	npm i
 ```
 Esto instalará las dependencias necesarias para este proyecto.
+
+### Iniciar Servidor React
+Una vez las dependecias esten instaladas, procederemos a iniciar el servidor de React para visualizar el proyecto
+
+Usar el siguiente comando:
+```Bash
+	sudo npm start
+```
+Esto levantara el dicho servidor en el puerto 3000 de forma nativa

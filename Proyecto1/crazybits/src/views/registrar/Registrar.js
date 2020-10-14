@@ -1,4 +1,5 @@
 import React from 'react';
+//import logo from '../../img/brand/';
 
 class Registrar extends React.Component {
     render() {
@@ -6,7 +7,7 @@ class Registrar extends React.Component {
             <div className="container">
                 <div className="py-5 text-center">
                     <br />
-                    <img className="d-block mx-auto mb-4" src="./assets/brand/bootstrap-solid.svg" alt="" width="72" height="72" />
+                    <img className="d-block mx-auto mb-4" src="../../img/brand/bootstrap.png" alt="" width="72" height="72" />
                     <h2>Reporte de baches</h2>
                     <p className="lead">Para acceder a este sistema es necesario que se registre proporcionando los
                     datos solicitados a continuación.

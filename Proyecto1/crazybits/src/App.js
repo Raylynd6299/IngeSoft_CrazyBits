@@ -1,13 +1,14 @@
 import React from 'react';
-import $ from 'jquery';
-import Popper from 'popper.js';
+//import $ from 'jquery';
+//import Popper from 'popper.js';
+
+
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../node_modules/bootstrap/dist/js/bootstrap.min.js';
 
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import Dashboard from './views/dashboard/Dashboard';
-import Home from './views/home/Home'
+
 
 function App() {
   return (

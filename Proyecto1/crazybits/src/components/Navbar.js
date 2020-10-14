@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Dashboard from "../views/dashboard/Dashboard";
 import Home from "../views/home/Home";
+import Login from "../views/login/Login";
 import Registrar from "../views/registrar/Registrar";
 import Reporte from "../views/reporte/Reporte";
 
@@ -29,6 +30,9 @@ class Navbar extends React.Component {
                         </ul>
                         <ul class="navbar-nav">
                             <li class="nav-item active">
+                                <Link class="nav-link" to="/Login">Iniciar Sesión<span class="sr-only">(current)</span></Link>
+                            </li>
+                            <li class="nav-item active">
                                 <Link class="nav-link" to="/">Salir<span class="sr-only">(current)</span></Link>
                             </li>
                         </ul>
@@ -39,6 +43,7 @@ class Navbar extends React.Component {
             <Route path='/Dashboard' exact component={Dashboard}/>
             <Route path='/Registrar' exact component={Registrar}/>
             <Route path='/Reporte' exact component={Reporte}/>
+            <Route path='/Login' exact component={Login}/>
         </Router>;
     }
 }

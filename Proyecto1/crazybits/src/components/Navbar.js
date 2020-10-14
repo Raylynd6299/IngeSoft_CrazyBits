@@ -10,7 +10,7 @@ class Navbar extends React.Component {
         return <Router>
             <header>
                 <nav className="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-                    <a className="navbar-brand" href="#">Sistema de baches</a>
+                    <Link className="navbar-brand" to="/">Sistema de baches</Link>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
                         aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
@@ -18,16 +18,13 @@ class Navbar extends React.Component {
                     <div className="collapse navbar-collapse" id="navbarCollapse">
                         <ul className="navbar-nav mr-auto">
                             <li className="nav-item active">
-                                <Link className="nav-link" to="/">Inicio<span className="sr-only">(current)</span></Link>
-                            </li>
-                            <li className="nav-item active">
                                 <Link className="nav-link" to="/Registrar">Registrar usuario <span className="sr-only">(current)</span></Link>
                             </li>
                             <li className="nav-item active">
                                 <Link className="nav-link" to="/Reporte">Registrar reporte <span className="sr-only">(current)</span></Link>
                             </li>
                             <li className="nav-item active">
-                                <Link className="nav-link" to="/Dashboard" tabindex="-1" aria-disabled="true">Dashboard</Link>
+                                <Link className="nav-link" to="/Dashboard">Dashboard</Link>
                             </li>
                         </ul>
                         <ul class="navbar-nav">
@@ -42,9 +39,6 @@ class Navbar extends React.Component {
             <Route path='/Dashboard' exact component={Dashboard}/>
             <Route path='/Registrar' exact component={Registrar}/>
             <Route path='/Reporte' exact component={Reporte}/>
-            <Route path='/' exact component={Home}/>
-
-
         </Router>;
     }
 }

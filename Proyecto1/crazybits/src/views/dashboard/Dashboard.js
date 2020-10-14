@@ -3,15 +3,23 @@ import React from "react";
 class Dashboard extends React.Component {
     render() {
         return (
-            <main role="main" class="flex-shrink-0 m-auto">
-                <div class="container pt-3 d-flex flex-column">
-                    <h1 class="mt-5">Sticky footer with fixed navbar</h1>
-                    <p class="lead">Pin a footer to the bottom of the viewport in desktop browsers with this custom HTML and CSS. A
-        fixed navbar has been added with <code>padding-top: 60px;</code> on the <code>main &gt; .container</code>.</p>
-                    <p>Back to <a href="#">the default sticky footer</a> minus the navbar.</p>
-                    <h2>Reportes</h2>
-                    <div class="table-responsive">
-                        <table class="table table-striped table-sm">
+            <main role="main" className="flex-shrink-0 m-auto">
+                <div className="container pt-3 d-flex flex-column">
+                    <h1 className="mt-5">Sticky footer with fixed navbar</h1>
+                    <p className="lead">Lorem ipsum dolor sit amet, 
+                    consectetur adipiscing elit. Maecenas eu lacus eros. 
+                    Donec id scelerisque nibh, quis semper est. Quisque et 
+                    lacinia est. Donec vel urna sit amet mauris venenatis 
+                    aliquam. Nam ut luctus eros. Ut laoreet neque non diam 
+                    mattis, id elementum turpis sagittis. Aliquam mauris 
+                    dolor, elementum vitae lobortis ultricies, feugiat id 
+                    diam. Pellentesque rutrum rhoncus nisi et auctor. Etiam 
+                    volutpat velit eget tempor mattis. Nulla iaculis magna 
+                    magna, quis cursus sem aliquet nec. Aliquam metus enim, 
+                    tristique quis sapien eu, dictum placerat quam.</p>
+                    <h1 className="mt-5">Reportes</h1>
+                    <div className="table-responsive">
+                        <table className="table table-striped">
                             <thead>
                                 <tr>
                                     <th>ID</th>
@@ -103,7 +111,7 @@ class Dashboard extends React.Component {
                                     <td>1,011</td>
                                     <td>eget</td>
                                     <td>nulla</td>
-                                    <td>Class</td>
+                                    <td>ClassName</td>
                                     <td>aptent</td>
                                 </tr>
                                 <tr>

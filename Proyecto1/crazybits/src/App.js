@@ -1,5 +1,8 @@
 import React from 'react';
+import $ from 'jquery';
+import Popper from 'popper.js';
 import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/js/bootstrap'
 
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';

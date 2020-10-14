@@ -57,3 +57,11 @@ Para levantar el API-Rest escrita en el archivo ***APIBAches.py*** use:
 Esto levatara el API, a la escucha en el puerto ***9000*** de su ***HOST*** escrito en el archivo ***configs.py***
 
 ## FrontEnd
+Se desarrolla con Reactjs, para acceder al desarrollo del FrontEnd, se debe tener instalado nodejs, se recomienda la versión LTS.
+
+Una vez instalado se accede a la carpeta crazybits se ejecuta el siguiente comando:
+```Bash
+	cd crazybits
+	npm i
+```
+Esto instalará las dependencias necesarias para este proyecto.

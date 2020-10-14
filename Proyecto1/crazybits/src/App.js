@@ -9,9 +9,8 @@ import Home from './views/home/Home'
 function App() {
   return (
     [
-      <div className="cover-container d-flex h-100 mx-auto flex-column">
+      <div className="cover-container d-flex h-100 mx-auto flex-column bg-light">
         <Navbar/>
-        <Home/>
         <Footer/>
       </div>  
     ]

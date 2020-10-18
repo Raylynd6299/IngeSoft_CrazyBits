@@ -6,7 +6,11 @@ from datetime import datetime
 import base
 import models 
 
+api = hug.API(__name__)
+api.http.add_middleware(hug.middleware.CORSMiddleware(api, max_age=10))
+
 USUARIOLOG = ""#email
+
 
 #Usuario
 @hug.post("/AltaReporte")

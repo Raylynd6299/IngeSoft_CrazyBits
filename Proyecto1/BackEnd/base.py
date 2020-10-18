@@ -18,7 +18,8 @@ try:
                     )
     cursor = db.cursor()
 except Exception as e:
-    print("Error al conectar con la base de Datos") 
+    print("Error al conectar con la base de Datos")
+    print(e) 
     sys.exit(1)
 
 def hash_string(string):

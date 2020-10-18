@@ -8,9 +8,11 @@ import Reporte from "../views/reporte/Reporte";
 
 class Navbar extends React.Component {
     render() {
-        return <Router>
+        return <>
+        
+        <Router>
             <header>
-                <nav className="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+                <nav className="navbar navbar-expand-md navbar-dark fixed-top bg-dark" id="nav">
                     <Link className="navbar-brand" to="/">Sistema de baches</Link>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
                         aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -37,14 +39,18 @@ class Navbar extends React.Component {
                             </li>
                         </ul>
                     </div>
+                    
                 </nav>
+                
             </header>
+            
             <Route path='/' exact component={Home}/>
             <Route path='/Dashboard' exact component={Dashboard}/>
             <Route path='/Registrar' exact component={Registrar}/>
             <Route path='/Reporte' exact component={Reporte}/>
             <Route path='/Login' exact component={Login}/>
-        </Router>;
+        </Router>
+        </>;
     }
 }
 export default Navbar

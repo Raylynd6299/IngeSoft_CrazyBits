@@ -15,9 +15,10 @@ import Footer from './components/Footer';
 function App() {
   return (
     <>
-      <div className="cover-container d-flex h-100 mx-auto flex-column bg-light">
+      <div id="ctn" className="cover-container d-flex h-100 mx-auto flex-column bg-light">
         <Navbar/>
         <ToastContainer
+          containerId="ctn"
           position = "top-right" 
           autoClose = {5000}
           hideProgressBar
@@ -27,7 +28,7 @@ function App() {
           pauseOnVisibilityChange
           draggable
           pauseOnHover
-        />
+      />
         <Footer/>
       </div> 
       

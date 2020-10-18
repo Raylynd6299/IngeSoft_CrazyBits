@@ -1,10 +1,56 @@
-import React from 'react';
-//import logo from '../../img/brand/';
+import React,{useState} from 'react';
+import {Form, Button, Col, Row, Spinner} from "react-bootstrap"
+import {isEmailValid} from "../../utils/validations"
+import { signUpApi } from "../../api/signup"
+import { values, size } from "lodash";
+import { toast } from "react-toastify"
 
-class Registrar extends React.Component {
-    render() {
-        return (
-            <div className="container">
+//import logo from '../../img/brand/';
+export default function Registrar(){
+    const [formData, setFormData] = useState(formUserVoidForm());
+    const [signUpLoading, setSignUpLoading] = useState(false)
+
+    const onChange = e => {
+        setFormData({...formData,[e.target.name]:e.target.value})
+    }
+    
+    const onSubmit = e => {
+        e.preventDefault();
+        let validCount = 0
+        values(formData).some(value =>{
+            value && validCount++;
+            return null;
+        });
+
+        if (validCount !== size(formData)) {
+            toast.warning("Completa todos los campos del formulario")
+        } else{
+            if (!isEmailValid(formData.email)) {
+                toast.warning("Email invalido")
+            }else if(formData.Password !== formData.repeatPassword){
+                toast.warning("Las contraseñas no son iguales")
+            }else if(size(formData.Password) < 6){
+                toast.warning("La contraseña tiene que tener al menos 6 caracteres")
+            }else{
+                setSignUpLoading(true)
+                signUpApi(formData,{Tipo:0,Delegacion:""}).then(response => {
+                    if(response.code) {
+                        toast.warning(response.message)
+                    }else{
+                        toast.success("El registro ha sido correcto")
+                        setFormData(formUserVoidForm())
+                    }
+                }).catch(()=>{
+                    toast.error("Error del servidor, intentelo mas tarde")
+                }).finally(()=>{
+                    setSignUpLoading(false);
+                })
+            }
+        }
+    }
+
+    return(
+        <div className="container mb-5 pb-5">
                 <div className="py-5 text-center">
                     <br />
                     <img className="d-block mx-auto mb-4" src="../../img/brand/bootstrap.png" alt="" width="72" height="72" />
@@ -17,120 +63,71 @@ class Registrar extends React.Component {
                 <div className="row">
                     <div className="col-md-12 order-md-1">
                         <h4 className="mb-3">Registrar cuenta</h4>
-                        <form className="needs-validation" novalidate>
-                            <div className="row">
-                                <div className="col-md-4 col-sm-12 mb-3">
-                                    <label for="nombre">Nombre</label>
-                                    <input type="text" className="form-control" id="nombre" required />
-                                    <div className="invalid-feedback">
-                                        Campo requerido.
-								</div>
-                                </div>
-                                <div className="col-md-4 col-sm-12 mb-3">
-                                    <label for="apellidoPat">Apellido Paterno</label>
-                                    <input type="text" className="form-control" id="aPaterno" required />
-                                    <div className="invalid-feedback">
-                                        Campo requerido.
-								</div>
-                                </div>
-                                <div className="col-md-4 col-sm-12 mb-3">
-                                    <label for="apellidoMat">Apellido Materno</label>
-                                    <input type="text" className="form-control" id="aMaterno" required />
-                                    <div className="invalid-feedback">
-                                        Campo requerido.
-								</div>
-                                </div>
-                            </div>
-                            <div className="row">
-                                <div className="col-md-6 col-sm-12 mb-3">
-                                    <label for="fechaNacimiento">Fecha de nacimiento</label>
-                                    <input type="text" className="form-control" name="input" placeholder="YYYY-MM-DD" required
-                                        pattern="(?:19|20)\[0-9\]{2}-(?:(?:0\[1-9\]|1\[0-2\])-(?:0\[1-9\]|1\[0-9\]|2\[0-9\])|(?:(?!02)(?:0\[1-9\]|1\[0-2\])-(?:30))|(?:(?:0\[13578\]|1\[02\])-31))"
-                                        title="Enter a date in this format YYYY-MM-DD" />
-                                    <div className="invalid-feedback">
-                                        Campo requerido.
-								</div>
-                                </div>
-
-                                <div className="col-md-6 col-sm-12 mb-3">
-                                    <label for="curp">CURP<span className="text-muted"></span></label>
-                                    <input type="text" className="form-control" id="curp" placeholder="Clave Unica de Registro Poblacional" required />
-                                    <div className="invalid-feedback">
-                                        Campo requerido.
-								</div>
-                                </div>
-                            </div>
-                            <div className="row">
-                                <div className="col-md-6 col-sm-12 mb-3">
-                                    <label for="fechaNacimiento">Alcaldía</label>
-                                    <select className="custom-select d-block w-100" id="alcaldia" required>
-                                        <option value="">Elegir...</option>
-                                        <option>Álvaro Obregón</option>
-                                        <option>Azcapotzalco</option>
-                                        <option>Benito Juárez</option>
-                                        <option>Coyoacán</option>
-                                        <option>Cuajimalpa de Morelos</option>
-                                        <option>Cuauhtémoc</option>
-                                        <option>Gustavo A. Madero</option>
-                                        <option>Iztacalco</option>
-                                        <option>Iztapalapa</option>
-                                        <option>La Magdalena Contreras</option>
-                                        <option>Miguel Hidalgo</option>
-                                        <option>Milpa Alta</option>
-                                        <option>Tlalpan</option>
-                                        <option>Tláhuac</option>
-                                        <option>Venustiano Carranza</option>
-                                        <option>Xochimilco</option>
-                                    </select>
-                                    <div className="invalid-feedback">
-                                        Campo requerido.
-								</div>
-                                </div>
-
-                                <div className="col-md-6 col-sm-12 mb-3">
-                                    <label for="curp">Tipo de usuario<span className="text-muted"></span></label>
-                                    <select className="custom-select d-block w-100" id="tipo" required>
-                                        <option value="">Elegir...</option>
-                                        <option>Ciudadano</option>
-                                        <option>Gestor</option>
-                                    </select>
-                                    <div className="invalid-feedback">
-                                        Campo requerido.
-								</div>
-                                </div>
-                            </div>
-                            <div className="mb-3">
-                                <label for="email">Correo electrónico</label>
-                                <input type="email" className="form-control" id="email" placeholder="usuario@ejemplo.com" required />
-                                <div className="invalid-feedback">
-                                    Campo requerido.
-								</div>
-                            </div>
-
-                            <div className="row">
-                                <div className="col-md-6 mb-3">
-                                    <label for="password">Contraseña</label>
-                                    <input type="password" className="form-control" id="password" required />
-                                    <div className="invalid-feedback">
-                                        Campo requerido.
-								</div>
-                                </div>
-                                <div className="col-md-6 mb-3">
-                                    <label for="password">Confirmar contraseña</label>
-                                    <input type="password" className="form-control" id="verPassword" required />
-                                    <div className="invalid-feedback">
-                                        Campo requerido.
-								</div>
-                                </div>
-                            </div>
-                            <hr className="mb-4" />
-                            <button className="btn btn-primary btn-lg btn-block" type="submit">Registrar</button>
-                        </form>
+                        
+                        <Form  onSubmit = {onSubmit} onChange={onChange}>
+                            <Form.Group>
+                                <Row>
+                                    <Col>
+                                        <Form.Label>Nombre</Form.Label>
+                                        <Form.Control type="text" placeholder="Nombre" name="nombre" defaultValue={formData.nombre}/>
+                                    </Col>
+                                    <Col>
+                                        <Form.Label>Apellido materno</Form.Label>
+                                        <Form.Control type="text" placeholder="Apellido Paterno" name="apellidoPaterno" defaultValue={formData.apellidoPaterno}/>
+                                    </Col>
+                                    <Col>
+                                        <Form.Label>Apellido materno</Form.Label>
+                                        <Form.Control type="text" placeholder="Apellido Materno" name="apellidoMaterno" defaultValue={formData.apellidoMaterno}/>
+                                    </Col>
+                                </Row>
+                            </Form.Group>
+                            <Form.Group>
+                                <Row>
+                                    <Col>
+                                        <Form.Label>Fecha de nacimiento</Form.Label>
+                                        <Form.Control type="text" placeholder="Fecha YYYY-MM-DD" name="FeNa" defaultValue={formData.FeNa} />
+                                    </Col>
+                                    <Col>
+                                        <Form.Label>CURP</Form.Label>
+                                        <Form.Control type="text" placeholder="Clave Unica de Registro Poblacional" name="CURP" defaultValue={formData.CURP}/>
+                                    </Col>
+                                </Row>
+                            </Form.Group>
+                            <Form.Group>
+                                <Form.Label>Correo electronico</Form.Label>
+                                <Form.Control type="email" placeholder = "Correo electronico" name="email" defaultValue={formData.email} />
+                            </Form.Group>
+                            <Form.Group>
+                                <Row>
+                                    <Col>
+                                        <Form.Label>Contraseña</Form.Label>
+                                        <Form.Control type="password" placeholder = "Contraseña" name ="Password" defaultValue={formData.Password} />
+                                    </Col>
+                                    <Col>
+                                        <Form.Label>Confirmar contraseña</Form.Label>
+                                        <Form.Control type="password" placeholder = "Confirmar contraseña" name="repeatPassword" defaultValue={formData.repeatPassword}/>
+                                    </Col>
+                                </Row>
+                            </Form.Group>
+                            <Button className="btn-block m-1 mt-4" variant="primary" type= "submit">
+                                {!signUpLoading ? "Registrarse" : <Spinner animation="border"/>}
+                            </Button>
+                        </Form>
                     </div>
                 </div>
             </div>
-        );
-    }
+    );
 }
 
-export default Registrar;
+function formUserVoidForm(){
+    return {
+        nombre:"",
+        apellidoPaterno: "",
+        apellidoMaterno: "", 
+        email :"",
+        FeNa:"",
+        Password :"",
+        repeatPassword:"",
+        CURP :""
+    }
+}

@@ -1,4 +1,6 @@
 import React from 'react';
+import { ToastContainer } from "react-toastify";
+
 //import $ from 'jquery';
 //import Popper from 'popper.js';
 
@@ -12,12 +14,26 @@ import Footer from './components/Footer';
 
 function App() {
   return (
-    [
+    <>
       <div className="cover-container d-flex h-100 mx-auto flex-column bg-light">
         <Navbar/>
+        <ToastContainer
+          position = "top-right" 
+          autoClose = {5000}
+          hideProgressBar
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnVisibilityChange
+          draggable
+          pauseOnHover
+        />
         <Footer/>
-      </div>  
-    ]
+      </div> 
+      
+      
+       
+    </>
   );
 }
 

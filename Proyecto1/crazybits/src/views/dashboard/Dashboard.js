@@ -3,7 +3,7 @@ import {Table} from "react-bootstrap"
 import {map} from "lodash"
 import {getUserApi,ObtenerReportesUsuario} from "../../api/user";
 import {useHistory} from "react-router-dom"
-
+import LogoCDMX from "../../img/CDMX.png"
 
 export default function Dashboard(props){
     let history = useHistory()
@@ -30,10 +30,11 @@ export default function Dashboard(props){
     return(
         <main role="main" className="flex-shrink-0 my-5 py-5">
                 <div className="container py-3 d-flex flex-column ">
-                <h1 className="h1">Reportes</h1>
-                    <h2 className="h4">Nombre: {userInfo?.Usuario?.nombre} {userInfo?.Usuario?.apellidoPaterno} {userInfo?.Usuario?.apellidoMaterno} </h2>
-                    <h3 className="h4">Correo: {userInfo?.Usuario?.email}</h3>
-                    <p className="text-justify">Aqui puede visualizar los reportes creados por usted y visualizar su status.</p>
+                <img className="d-block mx-auto" src={LogoCDMX} alt="CDMX" width="25%"/>
+                <h1 className="my-1 py-1 h1">Reportes</h1>
+                    <h2 className="my-1 py-1 h4">Nombre: {userInfo?.Usuario?.nombre} {userInfo?.Usuario?.apellidoPaterno} {userInfo?.Usuario?.apellidoMaterno} </h2>
+                    <h3 className="my-1 py-1 h4">Correo: {userInfo?.Usuario?.email}</h3>
+                    <p className="lead text-justify my-1 py-1">Aqui puede visualizar los reportes creados por usted y visualizar su status.</p>
                     <h2 className=" h2 my-3">Historial de Reportes</h2>
             
                     <div className="table-responsive">

@@ -63,10 +63,10 @@ export default function Login(props){
     return (
         <div className="container mb-5 pb-5 bg-light">
             
-            <div className="py-5 text-center">
-                <img className="d-block mx-auto mb-4" src={LogoCDMX} alt="CDMX" width="20%"/>
-                <h3>Reporte de baches</h3>
-                <p>La Ciudad de México  ha sufrido un deterioro en sus
+            <div className="my-5 py-5 text-center">
+                <img className="d-block mx-auto" src={LogoCDMX} alt="CDMX" width="25%"/>
+                <h1 className="my-1 py-1 h1">Reporte de baches</h1>
+                <p className="lead text-center">La Ciudad de México  ha sufrido un deterioro en sus
                 vialidades a lo largo de los años, afectando a automovilistas, ciclistas e incluso peatones,
                 causando daños materielas y personales, en ocasiones de gravedad. Por eso se creo este sistema
                 que tiene la finalidad de atender los reportes realizados por la ciudadanía en la red vial primaria.
@@ -74,7 +74,6 @@ export default function Login(props){
                 </p>
             </div>
             
-
             <Form className="form-signin center" onChange={onChange} onSubmit={onSubmit}>
             <Form.Group>
                     <Form.Control type="email"  name="email" placeholder="Correo electrónico" defaultValue={formData.email}/>

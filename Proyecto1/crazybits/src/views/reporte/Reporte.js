@@ -5,7 +5,7 @@ import { values, size } from "lodash";
 import { toast } from "react-toastify";
 import {useHistory} from "react-router-dom";
 import { generarReporte } from "../../api/reports"
-
+import LogoCDMX from "../../img/CDMX.png"
 
 export default function Reporte(props) {
      
@@ -61,8 +61,9 @@ export default function Reporte(props) {
     return (
         <div className="container mb-5 pb-5">
             <div className="py-5 text-center">
+            <img className="d-block mx-auto" src={LogoCDMX} alt="CDMX" width="25%"/>
                 <br />
-                <h2>Reporte de baches</h2>
+                <h1 className="my-1 py-1 h1">Reporte de baches</h1>
                 <p className="lead">Llene todos los campos solicitados.</p>
             </div>
 

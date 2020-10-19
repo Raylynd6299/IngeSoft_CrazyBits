@@ -13,8 +13,8 @@ export default function Navbar(props){
     return (
         <Router>
             <header>
-                <nav className="navbar navbar-expand-md navbar-dark fixed-top bg-dark" id="nav">
-                    <Link className="navbar-brand" to="/">Sistema de Gestion de Bache | CDMX baches</Link>
+                <nav className="navbar navbar-expand-md navbar-dark fixed-top bg-dark py-1" id="nav">
+                    <Link className="navbar-brand font-weight-lighter" to="/">Sistema de Gestion de Baches | CDMX baches</Link>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
                         aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>

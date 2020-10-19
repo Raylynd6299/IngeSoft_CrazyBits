@@ -1,0 +1,5 @@
+html, body{
+    height: 100%!important;
+    width: 100%!important;
+    background-image: url(../../img/bg.jpg);
+}

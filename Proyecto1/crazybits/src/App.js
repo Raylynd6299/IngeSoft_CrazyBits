@@ -15,7 +15,7 @@ import Footer from './components/Footer';
 function App() {
   return (
     <>
-      <div id="ctn" className="cover-container d-flex h-100 mx-auto flex-column bg-light">
+      <div id="ctn" className="cover-container d-flex h-100 mx-auto flex-column" >
         <Navbar/>
         <ToastContainer
           containerId="ctn"

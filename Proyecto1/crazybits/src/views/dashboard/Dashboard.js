@@ -3,7 +3,7 @@ import React from "react";
 class Dashboard extends React.Component {
     render() {
         return (
-            <main role="main" className="flex-shrink-0 m-auto">
+            <main role="main" className="flex-shrink-0 m-auto bg-light">
                 <div className="container pt-3 d-flex flex-column">
                     <h1 className="mt-5">Sticky footer with fixed navbar</h1>
                     <p className="lead">Lorem ipsum dolor sit amet, 

@@ -1,9 +1,18 @@
 html, body{
     height: 100%!important;
     width: 100%!important;
-    background-image: url(../../img/bg.jpg);
 }
 
 .bg{
-    background-image: url(../../img/bg.jpg);
+    background:linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,106,121,0.13014712721025912) 0%, rgba(41,0,255,0.099334802280287) 100%), 
+    url(../../img/bg.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-size: cover;
+}
+
+.texts{
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 25px;
 }

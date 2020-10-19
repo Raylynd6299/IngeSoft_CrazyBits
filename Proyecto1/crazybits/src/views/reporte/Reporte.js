@@ -52,7 +52,6 @@ export default function Reporte(props) {
         <div className="container mb-5 pb-5">
             <div className="py-5 text-center">
                 <br />
-                <img className="d-block mx-auto mb-4" src="./assets/brand/bootstrap-solid.svg" alt="" width="72" height="72" />
                 <h2>Reporte de baches</h2>
                 <p className="lead">Llene todos los campos solicitados.</p>
             </div>

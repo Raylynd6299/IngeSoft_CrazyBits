@@ -1,25 +1,18 @@
-import React from "react";
+import React, {useState,useEffect} from 'react';
+import { Form, Button, Spinner, Table } from "react-bootstrap"
 
-class Dashboard extends React.Component {
-    render() {
+
+export default function Dashboard(props){
         return (
-            <main role="main" className="flex-shrink-0 m-auto bg-light">
-                <div className="container pt-3 d-flex flex-column">
-                    <h1 className="mt-5">Sticky footer with fixed navbar</h1>
-                    <p className="lead">Lorem ipsum dolor sit amet, 
-                    consectetur adipiscing elit. Maecenas eu lacus eros. 
-                    Donec id scelerisque nibh, quis semper est. Quisque et 
-                    lacinia est. Donec vel urna sit amet mauris venenatis 
-                    aliquam. Nam ut luctus eros. Ut laoreet neque non diam 
-                    mattis, id elementum turpis sagittis. Aliquam mauris 
-                    dolor, elementum vitae lobortis ultricies, feugiat id 
-                    diam. Pellentesque rutrum rhoncus nisi et auctor. Etiam 
-                    volutpat velit eget tempor mattis. Nulla iaculis magna 
-                    magna, quis cursus sem aliquet nec. Aliquam metus enim, 
-                    tristique quis sapien eu, dictum placerat quam.</p>
-                    <h1 className="mt-5">Reportes</h1>
+            <main role="main" className="flex-shrink-0 my-5 py-5">
+                <div className="container py-3 d-flex flex-column ">
+                <h1 className="h1">Reportes</h1>
+                    <h2 className="h3">Nombre</h2>
+                    <h3 className="h3">Correo</h3>
+                    <p className="text-justify">Aqui puede visualizar los reportes creados por usted y visualizar su status.</p>
+                    <h2 className=" h2 my-3">Historial de Reportes</h2>
                     <div className="table-responsive">
-                        <table className="table table-striped">
+                        <Table className="table table-striped">
                             <thead>
                                 <tr>
                                     <th>ID</th>
@@ -143,12 +136,9 @@ class Dashboard extends React.Component {
                                     <td>libero</td>
                                 </tr>
                             </tbody>
-                        </table>
+                        </Table>
                     </div>
                 </div>
             </main>
         );
     }
-}
-
-export default Dashboard;

@@ -52,5 +52,5 @@ def ObtenerFotos_Test():
     print(result.status_code)
     
 if __name__ == '__main__':
-    SubirFotos_Test()
+    AltaUsuario_Test()
     

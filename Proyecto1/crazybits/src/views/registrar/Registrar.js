@@ -52,7 +52,7 @@ export default function Registrar(props){
     }
 
     return(
-        <div className="container mb-5 pb-5">
+        <div className="container mb-5 pb-5 bg-light">
                 <div className="py-5 text-center">
                     <br />
                     <img className="d-block mx-auto mb-4" src="../../img/brand/bootstrap.png" alt="" width="72" height="72" />

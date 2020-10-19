@@ -63,7 +63,7 @@ export default function Login(props){
         });
     };
     return (
-        <div className="container mb-5 pb-5">
+        <div className="container mb-5 pb-5 bg-light">
             
             <div className="py-5 text-center">
                 <br />

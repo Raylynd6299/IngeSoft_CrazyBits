@@ -4,9 +4,11 @@ import {isEmailValid} from "../../utils/validations"
 import { signUpApi } from "../../api/signup"
 import { values, size } from "lodash";
 import { toast } from "react-toastify"
+import {useHistory} from "react-router-dom";
 
 //import logo from '../../img/brand/';
 export default function Registrar(props){
+    let history = useHistory();
     const {setUserUp} = props
     const [formData, setFormData] = useState(formUserVoidForm());
     const [signUpLoading, setSignUpLoading] = useState(false)
@@ -41,6 +43,7 @@ export default function Registrar(props){
                         toast.success("El registro ha sido correcto")
                         setUserUp(formData.email)
                         setFormData(formUserVoidForm())
+                        history.push("/Dashboard")
                     }
                 }).catch(()=>{
                     toast.error("Error del servidor, intentelo mas tarde")

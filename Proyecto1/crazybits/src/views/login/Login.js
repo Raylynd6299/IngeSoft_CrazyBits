@@ -4,15 +4,7 @@ import { toast  } from "react-toastify"
 import { values, size } from "lodash";
 import {isEmailValid} from "../../utils/validations"
 import { signInApi } from "../../api/auth"
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link,
-    Redirect,
-    useHistory,
-    useLocation
-  } from "react-router-dom";
+import {useHistory} from "react-router-dom";
 
 export default function Login(props){
     let history = useHistory();
@@ -44,8 +36,7 @@ export default function Login(props){
                         //Si llego aqui es que estuvo bien la consulta y ya solo redirigir al dashbord
                         toast.success("Ingreso con exito")
                         setUserUp(response.Usuario.email)
-                        history.push("/Registrar")
-                        console.log(response.Usuario)
+                        history.push("/Dashboard")
                     }
                 }).catch(()=>{
                     toast.error("Error en el servidor intentelo mas tarde")

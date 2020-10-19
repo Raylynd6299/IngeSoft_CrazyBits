@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import {Form, Button, Col, Row, Spinner} from "react-bootstrap"
 import {isEmailValid} from "../../utils/validations"
 import { signUpApi } from "../../api/signup"
@@ -9,9 +9,16 @@ import {useHistory} from "react-router-dom";
 //import logo from '../../img/brand/';
 export default function Registrar(props){
     let history = useHistory();
-    const {setUserUp} = props
+    const {setUserUp,UserUp,setReloading} = props
     const [formData, setFormData] = useState(formUserVoidForm());
     const [signUpLoading, setSignUpLoading] = useState(false)
+
+    useEffect(() => {
+        if(UserUp !== ""){
+            setReloading(true)
+            history.push("/Reporte")
+        }
+    }, [UserUp])
 
     const onChange = e => {
         setFormData({...formData,[e.target.name]:e.target.value})

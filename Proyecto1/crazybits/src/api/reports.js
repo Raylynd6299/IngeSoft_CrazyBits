@@ -17,14 +17,33 @@ export function obtenerReporte(reporte){
     })
 }
 
-export function generarReporte(){
+export function generarReporte(reporte,extra){
+    var hoy = new Date();
+    var yyyy = hoy.getFullYear();
+    var mm = hoy.getMonth() +1;
+    var dd = hoy.getDate();
+    if(dd<10) {
+        dd='0'+dd;
+    } 
+     
+    if(mm<10) {
+        mm='0'+mm;
+    }
+
     const url = `${API_HOST}/AltaReporte`
+    const reportTemp = {
+        ...reporte,
+        ...extra,
+        status:0,
+        fecha:yyyy+"-"+mm+"-"+dd,
+        numero:parseInt(reporte.numero)
+    }
     const params = {
-        metod:"POST",
-        headers:{
-            "Content-Type": "application/json",
+        method:"POST",
+        headers: {
+            "Content-Type": "application/json"
         },
-        body:JSON.stringify()
+        body:JSON.stringify(reportTemp)
     }
 
     return fetch(url, params).then(response => {
@@ -39,5 +58,3 @@ export function generarReporte(){
     })
 }
 
-
-export function  obtenerReporteUsuario(){}

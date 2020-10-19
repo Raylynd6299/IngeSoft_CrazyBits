@@ -9,7 +9,7 @@ import Reporte from "../views/reporte/Reporte";
 
 
 export default function Navbar(props){
-    const {UserUp,setUserUp} = props;
+    const {UserUp,setUserUp,setReloading} = props;
     return (
         <Router>
             <header>
@@ -55,12 +55,11 @@ export default function Navbar(props){
                 </nav>
                 
             </header>
-            
-            <Route path='/' exact component={() => <Home UserUp={UserUp} setUserUp={setUserUp}/>}/>
-            <Route path='/Dashboard' exact component={() => <Dashboard UserUp={UserUp} setUserUp={setUserUp}/>}/>
-            <Route path='/Registrar' exact component={() => <Registrar UserUp={UserUp} setUserUp={setUserUp}/>}/>
-            <Route path='/Reporte' exact component={() => <Reporte UserUp={UserUp} setUserUp={setUserUp}/>}/>
-            <Route path='/Login' exact component={() => <Login UserUp={UserUp} setUserUp={setUserUp}/>}/>
+            <Route path='/' exact component={() => <Home UserUp={UserUp} setUserUp={setUserUp} setReloading={setReloading}/>}/>
+            <Route path='/Dashboard' exact component={() => <Dashboard UserUp={UserUp} setUserUp={setUserUp} setReloading={setReloading}/>}/>
+            <Route path='/Registrar' exact component={() => <Registrar UserUp={UserUp} setUserUp={setUserUp} setReloading={setReloading}/>}/>
+            <Route path='/Reporte' exact component={() => <Reporte UserUp={UserUp} setUserUp={setUserUp} setReloading={setReloading}/>}/>
+            <Route path='/Login' exact component={() => <Login UserUp={UserUp} setUserUp={setUserUp} setReloading={setReloading}/>}/>
         </Router>
     );
 }

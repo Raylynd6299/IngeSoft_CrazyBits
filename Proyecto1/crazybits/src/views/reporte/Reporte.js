@@ -1,17 +1,53 @@
 import React, { useState } from 'react';
 import { Form, Button, Col, Row, Spinner } from "react-bootstrap";
-import { generarReporte } from "../../api/reports";
+//import { generarReporte } from "../../api/reports";
 import { values, size } from "lodash";
 import { toast } from "react-toastify";
+import {useHistory} from "react-router-dom";
+import { generarReporte } from "../../api/reports"
 
-export default function Reporte() {
+
+export default function Reporte(props) {
+     
+    let history = useHistory();
+    //const {setUserUp,UserUp,setReloading} = props
+    const {UserUp} = props
+
     const [formData, setFormData] = useState(formReportVoidForm());
     const [signUpLoading, setSignUpLoading] = useState(false)
 
     const onChange = e => {
         setFormData({ ...formData, [e.target.name]: e.target.value })
     }
+    const onSubmit = e => {
+        e.preventDefault();
+        
+        let validCount = 0
+        values(formData).some(value =>{
+            value && validCount++;
+            return null;
+        });
 
+        if (validCount !== size(formData)) {
+            toast.warning("Completa todos los campos del formulario")
+        } else{
+            setSignUpLoading(true)
+            
+            generarReporte(formData,{emailUser:UserUp,fotos:""}).then(response => {
+                if(response.code) {
+                    toast.warning(response.message)
+                }else{
+                    toast.success("El registro ha sido correcto")
+                    setFormData(formReportVoidForm())
+                    history.push("/Dashboard")
+                }
+            }).catch(()=>{
+                toast.error("Error del servidor, intentelo mas tarde")
+            }).finally(()=>{
+                setSignUpLoading(false);
+            })
+        }
+    }
     return (
         <div className="container mb-5 pb-5">
             <div className="py-5 text-center">
@@ -24,7 +60,7 @@ export default function Reporte() {
             <div className="row">
                 <div className="col-md-12 order-md-1">
                     <h4 className="mb-3">Reportar bache</h4>
-                    <Form>
+                    <Form onChange={onChange} onSubmit={onSubmit}>
                         <Form.Group>
                             <Row>
                                 <Col>
@@ -33,7 +69,7 @@ export default function Reporte() {
                                 </Col>
                                 <Col>
                                     <Form.Label>Número</Form.Label>
-                                    <Form.Control type="number" placeholder="424" name="numero" defaultValue={formData.numero} />
+                                    <Form.Control type="text" placeholder="424" name="numero" defaultValue={formData.numero} />
                                 </Col>
                                 <Col>
                                     <Form.Label>Colonia</Form.Label>
@@ -82,61 +118,20 @@ export default function Reporte() {
                                 </Col>
                             </Row>
                         </Form.Group>
+                        <Form.Group>
+                            <Row>
+                                <Col>
+                                    <Form.Group>
+                                        <Form.Label>Descripción</Form.Label>
+                                        <Form.Control as="textarea"  rows="6" placeholder="Descripcion" name="descripcion" defaultValue={formData.descripcion}/>
+                                    </Form.Group>
+                                </Col>
+                            </Row>
+                        </Form.Group>
+                        <Button className="btn-block m-1 mt-4" variant="primary" type= "submit">
+                            {!signUpLoading ? "Reportar" : <Spinner animation="border"/>}
+                        </Button>
                     </Form>
-
-                    <form className="needs-validation" novalidate>
-
-                        <div className="row">
-                            <div className="col-md-6 col-sm-12 mb-3">
-                                <label for="alcaldia">Alcaldía</label>
-                                <select className="custom-select d-block w-100" id="alcaldiaBache" required>
-                                    <option value="">Elegir...</option>
-                                    <option>Álvaro Obregón</option>
-                                    <option>Azcapotzalco</option>
-                                    <option>Benito Juárez</option>
-                                    <option>Coyoacán</option>
-                                    <option>Cuajimalpa de Morelos</option>
-                                    <option>Cuauhtémoc</option>
-                                    <option>Gustavo A. Madero</option>
-                                    <option>Iztacalco</option>
-                                    <option>Iztapalapa</option>
-                                    <option>La Magdalena Contreras</option>
-                                    <option>Miguel Hidalgo</option>
-                                    <option>Milpa Alta</option>
-                                    <option>Tlalpan</option>
-                                    <option>Tláhuac</option>
-                                    <option>Venustiano Carranza</option>
-                                    <option>Xochimilco</option>
-                                </select>
-                                <div className="invalid-feedback">
-                                    Campo requerido.
-                            </div>
-                            </div>
-                            <div className="col-md-6 col-sm-12 mb-3">
-                                <label for="zip">C.P.</label>
-                                <input type="text" className="form-control" id="cp" placeholder="06760" required />
-                                <div className="invalid-feedback">
-                                    Campo requerido.
-                            </div>
-                            </div>
-                        </div>
-                        <div className="row">
-                            <div className="col-md-6 col-sm-12 mb-3">
-                                <label for="curp">Descripción</label>
-                                <textarea className="form-control" id="descripcion" rows="3" required></textarea>
-                                <div className="invalid-feedback">
-                                    Campo requerido.
-                            </div>
-                            </div>
-                            <div className="col-md-6 col-sm-12 mb-3">
-                                <label for="exampleFormControlFile1">Fotografia</label>
-                                <p>Tome una fotografía donde se vea bien el bache.</p>
-                                <input type="file" className="form-control-file" id="exampleFormControlFile1" />
-                            </div>
-                        </div>
-                        <hr className="mb-4" />
-                        <button className="btn btn-primary btn-lg btn-block" type="submit">Reportar</button>
-                    </form>
                 </div>
             </div>
         </div>
@@ -144,11 +139,9 @@ export default function Reporte() {
 }
 
 function formReportVoidForm() {
+    //status: 0,fecha: "",fotos: "",emailUser: ""
     return {
-        status: 0,
-        fecha: "",
         descripcion: "",
-        fotos: "",
         calle: "",
         numero: 0,
         entreCalle1: "",
@@ -156,6 +149,5 @@ function formReportVoidForm() {
         Delegacion: "",
         colonia: "",
         CP: "",
-        emailUser: "prueba@prueba.com",
     }
 }

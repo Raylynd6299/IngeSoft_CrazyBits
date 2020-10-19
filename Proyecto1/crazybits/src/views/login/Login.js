@@ -1,17 +1,24 @@
-import React, {useState} from 'react';
+import React, {useState,useEffect} from 'react';
 import { Form, Button, Spinner } from "react-bootstrap"
 import { toast  } from "react-toastify"
 import { values, size } from "lodash";
 import {isEmailValid} from "../../utils/validations"
 import { signInApi } from "../../api/auth"
-import {useHistory} from "react-router-dom";
+import {useHistory} from "react-router-dom"
 
 export default function Login(props){
-    let history = useHistory();
-    const {setUserUp} = props
-
+    let history = useHistory()
+    const {setUserUp,UserUp,setReloading} = props
     const [formData, setFormData] = useState(initialFormVale())
     const [signInLoading, setSignInLoading] = useState(false)
+
+    useEffect(() => {
+        console.log(UserUp)
+        if(UserUp !== ""){
+            setReloading(true)
+            history.push("/Reporte")
+        }
+    }, [UserUp])
 
     const onSubmit = e =>{
         e.preventDefault();
@@ -36,7 +43,6 @@ export default function Login(props){
                         //Si llego aqui es que estuvo bien la consulta y ya solo redirigir al dashbord
                         toast.success("Ingreso con exito")
                         setUserUp(response.Usuario.email)
-                        history.push("/Dashboard")
                     }
                 }).catch(()=>{
                     toast.error("Error en el servidor intentelo mas tarde")

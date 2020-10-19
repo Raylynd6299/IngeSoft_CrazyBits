@@ -2,7 +2,8 @@ import React from 'react';
 import './bg.css';
 
 
-export default function Home(){
+
+export default function Home(props){
     return (
         <main role="main" class="mt-5 pt-5 bg">
             <div className="container">

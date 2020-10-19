@@ -11,8 +11,6 @@ export default function Salir(props){
         SalirUsuario().then(response => {
             if(response.status === 404){
                 toast.warning(response.message)
-            }else{
-                toast.success("Salio exito")
             }
         }).catch(()=>{
             toast.error("Error en el servidor intentelo mas tarde")

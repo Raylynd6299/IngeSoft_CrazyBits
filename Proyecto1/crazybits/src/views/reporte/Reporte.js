@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { Form, Button, Col, Row, Spinner } from "react-bootstrap";
 //import { generarReporte } from "../../api/reports";
 import { values, size } from "lodash";
@@ -15,7 +15,14 @@ export default function Reporte(props) {
 
     const [formData, setFormData] = useState(formReportVoidForm());
     const [signUpLoading, setSignUpLoading] = useState(false)
-
+    const [guardar, setguardar] = useState(null)
+    useEffect(() => {
+        setFormData(formReportVoidForm())
+        if (guardar !== null){
+            setguardar(null)
+            history.push("/Dashboard")
+        }
+    }, [guardar])
     const onChange = e => {
         setFormData({ ...formData, [e.target.name]: e.target.value })
     }
@@ -38,8 +45,7 @@ export default function Reporte(props) {
                     toast.warning(response.message)
                 }else{
                     toast.success("El registro ha sido correcto")
-                    setFormData(formReportVoidForm())
-                    history.push("/Dashboard")
+                    setguardar("listo")
                 }
             }).catch(()=>{
                 toast.error("Error del servidor, intentelo mas tarde")

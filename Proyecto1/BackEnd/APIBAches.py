@@ -96,6 +96,18 @@ def ObtenerUsuario(email:hug.types.text,Password:hug.types.text):
     USUARIOLOG = email
     return {"status":statusBase,"message":"Usuario obtenido con Exito" if statusBase == 201  else "Error al obtener el Usuario","Usuario":Usuario}
  
+@hug.get("/ObtenerInfoUsuario",example="email=Hola@gmail.com")
+def ObtenerInfoUsuario(email:hug.types.text):
+    global USUARIOLOG
+    if email == "" :
+        return {"status":404,"message":"El Usuario necesita todos los parametro"}
+    statusBase,Usuario = base.obtenerInfoUsuario(emailUser=email)
+    if statusBase == 201:
+        Usuario = Usuario.__dict__
+        del Usuario["Password"]
+        del Usuario["CURP"]
+    return {"status":statusBase,"message":"Usuario obtenido con Exito" if statusBase == 201  else "Error al obtener el Usuario","Usuario":Usuario}
+ 
 @hug.get("/ObtenerReporte",example="idReport=10")
 def ObtenerReporte(idReport:hug.types.number):
     statusBase,Reporte = base.obtenerReporte(idReporte=idReport)

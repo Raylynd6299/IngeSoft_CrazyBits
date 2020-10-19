@@ -179,7 +179,21 @@ def obtenerUsuario(emailUser,Password):
     except Exception as e:
         print("Error al obtener Usuario")
         return 404,{}
-    
+ 
+def obtenerInfoUsuario(emailUser):
+    if emailUser == "":
+        print("Error en el email o password")
+        return 404
+    queryobtenerUsuario = f"select * from Usuario where email = '{emailUser}';"
+    try:
+        cursor.execute(queryobtenerUsuario)
+        row = cursor.fetchone()
+        Usuario = models.Usuario(row[0],row[1],row[2],row[3],row[4],row[5],row[6],row[7],row[8])
+        return 201,Usuario
+    except Exception as e:
+        print("Error al obtener Usuario")
+        return 404,{}
+        
 def obtenerReportesDelegacion(Delegacion):
     if Delegacion == "":
         print("Error en la delegacion")
@@ -295,3 +309,5 @@ def guardarfotos(idReport,namefotos):
     
     
 
+    
+    

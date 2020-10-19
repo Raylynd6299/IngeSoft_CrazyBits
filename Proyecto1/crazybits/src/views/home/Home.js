@@ -2,6 +2,8 @@ import React from 'react';
 
 
 export default function Home(props){
+    const {UserUp} = props
+    console.log(UserUp)
     return (
         <main role="main" class="container m-auto p-auto">
             <div className="starter-template">

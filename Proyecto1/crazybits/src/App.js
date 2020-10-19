@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import { ToastContainer } from "react-toastify";
 
 //import $ from 'jquery';
@@ -13,10 +13,12 @@ import Footer from './components/Footer';
 
 
 function App() {
+  const [UserUp, setUserUp] = useState("") //UserUp Maneja el estado del uauario si esta vacia el usuario no esta dentro del sistema
+  // setUserUp Maneja el control del estado y cambia el valor
   return (
     <>
       <div id="ctn" className="cover-container d-flex h-100 mx-auto flex-column bg-light">
-        <Navbar/>
+        <Navbar UserUp={UserUp} setUserUp={setUserUp}/>
         <ToastContainer
           containerId="ctn"
           position = "top-right" 
@@ -28,7 +30,7 @@ function App() {
           pauseOnVisibilityChange
           draggable
           pauseOnHover
-      />
+        />
         <Footer/>
       </div> 
       

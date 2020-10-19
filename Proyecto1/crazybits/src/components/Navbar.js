@@ -6,10 +6,11 @@ import Login from "../views/login/Login";
 import Registrar from "../views/registrar/Registrar";
 import Reporte from "../views/reporte/Reporte";
 
-class Navbar extends React.Component {
-    render() {
-        return <>
-        
+
+
+export default function Navbar(props){
+    const {UserUp,setUserUp} = props;
+    return (
         <Router>
             <header>
                 <nav className="navbar navbar-expand-md navbar-dark fixed-top bg-dark" id="nav">
@@ -50,7 +51,5 @@ class Navbar extends React.Component {
             <Route path='/Reporte' exact component={Reporte}/>
             <Route path='/Login' exact component={Login}/>
         </Router>
-        </>;
-    }
+    );
 }
-export default Navbar

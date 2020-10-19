@@ -84,7 +84,7 @@ export default function Registrar(props){
                                         <Form.Control type="text" placeholder="Nombre" name="nombre" defaultValue={formData.nombre}/>
                                     </Col>
                                     <Col>
-                                        <Form.Label>Apellido materno</Form.Label>
+                                        <Form.Label>Apellido paterno</Form.Label>
                                         <Form.Control type="text" placeholder="Apellido Paterno" name="apellidoPaterno" defaultValue={formData.apellidoPaterno}/>
                                     </Col>
                                     <Col>

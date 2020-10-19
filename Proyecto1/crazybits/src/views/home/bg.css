@@ -3,3 +3,7 @@ html, body{
     width: 100%!important;
     background-image: url(../../img/bg.jpg);
 }
+
+.bg{
+    background-image: url(../../img/bg.jpg);
+}

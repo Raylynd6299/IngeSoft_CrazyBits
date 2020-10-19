@@ -16,10 +16,10 @@ export default function Dashboard(props){
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Dirección</th>
+                                    <th>Colonia</th>
+                                    <th>Dirección principal</th>
                                     <th>Fecha</th>
                                     <th>Status</th>
-                                    <th>Opcional</th>
                                 </tr>
                             </thead>
                             <tbody>

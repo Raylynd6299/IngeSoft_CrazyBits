@@ -1,5 +1,4 @@
 import React from 'react';
-import bg from '../../img/bg.jpg';
 import './bg.css';
 
 

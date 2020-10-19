@@ -17,7 +17,7 @@ function App() {
   // setUserUp Maneja el control del estado y cambia el valor
   return (
     <>
-      <div id="ctn" className="cover-container d-flex h-100 mx-auto flex-column bg-light">
+      <div id="ctn" className="cover-container d-flex h-100 mx-auto flex-column">
         <Navbar UserUp={UserUp} setUserUp={setUserUp}/>
         <ToastContainer
           containerId="ctn"

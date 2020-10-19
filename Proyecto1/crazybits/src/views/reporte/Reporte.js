@@ -24,7 +24,7 @@ export default function Reporte() {
             <div className="row">
                 <div className="col-md-12 order-md-1">
                     <h4 className="mb-3">Reportar bache</h4>
-                    <Form onChange={onChange}>
+                    <Form>
                         <Form.Group>
                             <Row>
                                 <Col>
@@ -56,7 +56,7 @@ export default function Reporte() {
                         <Form.Group >
                             <Row>
                                 <Col>
-                                    <Form.label>Alcaldía</Form.label>
+                                    <Form.Label>Alcaldía</Form.Label>
                                     <Form.Control as="select" size="sm" name="Delegacion">
                                         <option>Álvaro Obregón</option>
                                         <option>Azcapotzalco</option>
@@ -78,20 +78,7 @@ export default function Reporte() {
                                 </Col>
                                 <Col>
                                     <Form.Label>C.P.</Form.Label>
-                                    <Form.Control type="number" placeholder="00000" name="CP" defaultValue={formData.CP} />
-                                </Col>
-                            </Row>
-                        </Form.Group>
-                        <Form.Group>
-                            <Row>
-                                <Col>
-                                    <Form.Group>
-                                        <Form.Label>Descripción</Form.Label>
-                                        <Form.Group as="textarea" rows="4"></Form.Group>
-                                    </Form.Group>
-                                </Col>
-                                <Col>
-                                    
+                                    <Form.Control type="text" placeholder="00000" name="CP" defaultValue={formData.CP} />
                                 </Col>
                             </Row>
                         </Form.Group>

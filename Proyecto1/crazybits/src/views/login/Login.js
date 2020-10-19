@@ -4,8 +4,20 @@ import { toast  } from "react-toastify"
 import { values, size } from "lodash";
 import {isEmailValid} from "../../utils/validations"
 import { signInApi } from "../../api/auth"
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link,
+    Redirect,
+    useHistory,
+    useLocation
+  } from "react-router-dom";
 
-export default function Login(){
+export default function Login(props){
+    let history = useHistory();
+    const {setUserUp} = props
+
     const [formData, setFormData] = useState(initialFormVale())
     const [signInLoading, setSignInLoading] = useState(false)
 
@@ -30,7 +42,9 @@ export default function Login(){
                         toast.warning(response.message)
                     }else{
                         //Si llego aqui es que estuvo bien la consulta y ya solo redirigir al dashbord
-                        toast.success(["Hola"])
+                        toast.success("Ingreso con exito")
+                        setUserUp(response.Usuario.email)
+                        history.push("/Registrar")
                         console.log(response.Usuario)
                     }
                 }).catch(()=>{

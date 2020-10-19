@@ -6,7 +6,8 @@ import { values, size } from "lodash";
 import { toast } from "react-toastify"
 
 //import logo from '../../img/brand/';
-export default function Registrar(){
+export default function Registrar(props){
+    const {setUserUp} = props
     const [formData, setFormData] = useState(formUserVoidForm());
     const [signUpLoading, setSignUpLoading] = useState(false)
 
@@ -38,6 +39,7 @@ export default function Registrar(){
                         toast.warning(response.message)
                     }else{
                         toast.success("El registro ha sido correcto")
+                        setUserUp(formData.email)
                         setFormData(formUserVoidForm())
                     }
                 }).catch(()=>{

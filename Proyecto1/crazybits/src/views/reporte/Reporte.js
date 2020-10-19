@@ -11,12 +11,15 @@ export default function Reporte(props) {
      
     let history = useHistory();
     //const {setUserUp,UserUp,setReloading} = props
-    const {UserUp} = props
-
+    const {UserUp,setReloading} = props
     const [formData, setFormData] = useState(formReportVoidForm());
     const [signUpLoading, setSignUpLoading] = useState(false)
     const [guardar, setguardar] = useState(null)
     useEffect(() => {
+        if(UserUp === ""){
+            setReloading(true)
+            history.push("/")
+        }
         setFormData(formReportVoidForm())
         if (guardar !== null){
             setguardar(null)
@@ -41,7 +44,8 @@ export default function Reporte(props) {
             setSignUpLoading(true)
             
             generarReporte(formData,{emailUser:UserUp,fotos:""}).then(response => {
-                if(response.code) {
+                console.log(response)
+                if(response.status !== 201) {
                     toast.warning(response.message)
                 }else{
                     toast.success("El registro ha sido correcto")

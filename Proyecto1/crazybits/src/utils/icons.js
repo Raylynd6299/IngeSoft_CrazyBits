@@ -1,0 +1,1 @@
+export {ReactComponent as Logo } from "../img/CDMX.png";

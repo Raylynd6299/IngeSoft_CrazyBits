@@ -5,6 +5,7 @@ import Home from "../views/home/Home";
 import Login from "../views/login/Login";
 import Registrar from "../views/registrar/Registrar";
 import Reporte from "../views/reporte/Reporte";
+import Salir from "../views/salir/Salir"
 
 
 
@@ -45,7 +46,7 @@ export default function Navbar(props){
                             }
                             {UserUp !== "" &&
                             <li class="nav-item active">
-                                <Link class="nav-link" to="/">Salir<span class="sr-only">(current)</span></Link>
+                                <Link class="nav-link" to="/out">Salir<span class="sr-only">(current)</span></Link>
                             </li>
                             }
                             
@@ -60,6 +61,7 @@ export default function Navbar(props){
             <Route path='/Registrar' exact component={() => <Registrar UserUp={UserUp} setUserUp={setUserUp} setReloading={setReloading}/>}/>
             <Route path='/Reporte' exact component={() => <Reporte UserUp={UserUp} setUserUp={setUserUp} setReloading={setReloading}/>}/>
             <Route path='/Login' exact component={() => <Login UserUp={UserUp} setUserUp={setUserUp} setReloading={setReloading}/>}/>
+            <Route path='/out' exact component={() => <Salir UserUp={UserUp} setUserUp={setUserUp} setReloading={setReloading}/>}/>
         </Router>
     );
 }

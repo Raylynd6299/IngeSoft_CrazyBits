@@ -93,7 +93,7 @@ def crearTablaReporte():
     numero int not null,
     entreCalle1 varchar(50) not null,
     entreCalle2 varchar(50) not null,
-    Delegacion varchar(10) not null,
+    Delegacion varchar(30) not null,
     colonia varchar(50) not null,
     CP varchar(5) not null,
     emailUser varchar(30) not null,

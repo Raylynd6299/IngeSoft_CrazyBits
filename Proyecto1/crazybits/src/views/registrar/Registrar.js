@@ -5,6 +5,7 @@ import { signUpApi } from "../../api/signup"
 import { values, size } from "lodash";
 import { toast } from "react-toastify"
 import {useHistory} from "react-router-dom";
+import LogoCDMX from "../../img/CDMX.png"
 
 //import logo from '../../img/brand/';
 export default function Registrar(props){
@@ -64,8 +65,8 @@ export default function Registrar(props){
     return(
         <div className="container mb-5 pb-5 bg-light">
                 <div className="py-5 text-center">
-                    <br />
-                    <img className="d-block mx-auto mb-4" src="../../img/brand/bootstrap.png" alt="" width="72" height="72" />
+                    <img className="d-block mx-auto mb-4" src={LogoCDMX} alt="CDMX" width="20%"/>
+
                     <h2>Reporte de baches</h2>
                     <p className="lead">Para acceder a este sistema es necesario que se registre proporcionando los
                     datos solicitados a continuación.

@@ -5,6 +5,8 @@ import { values, size } from "lodash";
 import {isEmailValid} from "../../utils/validations"
 import { signInApi } from "../../api/auth"
 import {useHistory} from "react-router-dom"
+import LogoCDMX from "../../img/CDMX.png"
+
 
 export default function Login(props){
     let history = useHistory()
@@ -13,7 +15,6 @@ export default function Login(props){
     const [signInLoading, setSignInLoading] = useState(false)
 
     useEffect(() => {
-        console.log(UserUp)
         if(UserUp !== ""){
             setReloading(true)
             history.push("/Reporte")
@@ -63,12 +64,9 @@ export default function Login(props){
         <div className="container mb-5 pb-5 bg-light">
             
             <div className="py-5 text-center">
-                <br />
-                <br />  
-                <br />
-                <img className="d-block mx-auto mb-4" src="../../img/brand/bootstrap-4.svg" alt="" width="72" height="72" />
-                <h2>Reporte de baches</h2>
-                <p className="lead">La Ciudad de México  ha sufrido un deterioro en sus
+                <img className="d-block mx-auto mb-4" src={LogoCDMX} alt="CDMX" width="20%"/>
+                <h3>Reporte de baches</h3>
+                <p>La Ciudad de México  ha sufrido un deterioro en sus
                 vialidades a lo largo de los años, afectando a automovilistas, ciclistas e incluso peatones,
                 causando daños materielas y personales, en ocasiones de gravedad. Por eso se creo este sistema
                 que tiene la finalidad de atender los reportes realizados por la ciudadanía en la red vial primaria.

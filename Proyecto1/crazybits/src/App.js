@@ -17,13 +17,8 @@ function App() {
   const [UserUp, setUserUp] = useState("") //UserUp Maneja el estado del uauario si esta vacia el usuario no esta dentro del sistema
   // setUserUp Maneja el control del estado y cambia el valor
   return (
-<<<<<<< HEAD
       <AuthContext.Provider value={UserUp}>
       <div id="ctn" className="cover-container d-flex h-100 mx-auto flex-column">
-=======
-    <>
-      <div id="ctn" className="cover-container d-flex h-100 mx-auto flex-column">
->>>>>>> 1d423143270153c0c19920b304bdd207d7beaf4e
         <Navbar UserUp={UserUp} setUserUp={setUserUp}/>
         <ToastContainer
           containerId="ctn"

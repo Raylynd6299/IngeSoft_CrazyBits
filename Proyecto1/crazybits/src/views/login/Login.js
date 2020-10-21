@@ -10,16 +10,20 @@ import LogoCDMX from "../../img/CDMX.png"
 
 export default function Login(props){
     let history = useHistory()
-    const {setUserUp,UserUp,setReloading} = props
+    const {setUserUp,UserUp,setReloading,userType, setUserType} = props
     const [formData, setFormData] = useState(initialFormVale())
     const [signInLoading, setSignInLoading] = useState(false)
 
     useEffect(() => {
         if(UserUp !== ""){
             setReloading(true)
-            history.push("/Reporte")
+            if (userType === 0){
+                history.push("/Reporte")
+            }else if(userType === 1){
+                history.push("/DashboardGestor")
+            }
         }
-    }, [UserUp])
+    }, [UserUp,userType])
 
     const onSubmit = e =>{
         e.preventDefault();
@@ -44,6 +48,7 @@ export default function Login(props){
                         //Si llego aqui es que estuvo bien la consulta y ya solo redirigir al dashbord
                         toast.success("Ingreso con exito")
                         setUserUp(response.Usuario.email)
+                        setUserType(response.Usuario.Tipo)
                     }
                 }).catch(()=>{
                     toast.error("Error en el servidor intentelo mas tarde")

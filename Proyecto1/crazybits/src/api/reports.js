@@ -58,3 +58,29 @@ export function generarReporte(reporte,extra){
     })
 }
 
+export function cambiarStatusReport(idReport,estatus){
+   
+    const url = `${API_HOST}/CambiarEstado`
+    const reportTemp = {
+        idReport:idReport,
+        estatus:estatus
+    }
+    const params = {
+        method:"PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body:JSON.stringify(reportTemp)
+    }
+
+    return fetch(url, params).then(response => {
+        if(response.status >= 200 && response.status < 300){
+            return response.json();
+        }
+        return{code:404, message: "Algo no funcionó"}
+    }).then(result =>{
+        return result;
+    }).catch(err => {
+        return err;
+    })
+}

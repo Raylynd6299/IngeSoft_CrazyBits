@@ -16,12 +16,11 @@ import '../node_modules/bootstrap/dist/js/bootstrap.min.js';
 export default function App() {
   const [UserUp, setUserUp] = useState("") //UserUp Maneja el estado del uauario si esta vacia el usuario no esta dentro del sistema
   // setUserUp Maneja el control del estado y cambia el valor
-  
+  const [userType, setUserType] = useState(null)
   const [Reloading, setReloading] = useState(false)
 
   useEffect(() => {
     setReloading(false)
-    console.log(UserUp)
     
   }, [Reloading,UserUp])
 
@@ -29,7 +28,7 @@ export default function App() {
   return (
     <AuthContext.Provider value={UserUp}>
     <div id="ctn" className="cover-container d-flex h-100 mx-auto flex-column">
-      <Navbar UserUp={UserUp} setUserUp={setUserUp} setReloading={setReloading}/>
+      <Navbar UserUp={UserUp} setUserUp={setUserUp} setReloading={setReloading} userType={userType} setUserType={setUserType}/>
       
         <ToastContainer
           containerId="ctn"

@@ -137,7 +137,7 @@ def obtenerReportesUsuario(emailUser):
     if emailUser == "":
         print("Error en el email de Usario")
         return 404
-    queryobtenerReportesUsuario = f"""select * from Reporte where emailUser = '{emailUser}' order by fecha,idReport desc """   
+    queryobtenerReportesUsuario = f"""select * from Reporte where emailUser = '{emailUser}' order by idReport desc """   
     
     try:
         cursor.execute(queryobtenerReportesUsuario)
@@ -198,7 +198,7 @@ def obtenerReportesDelegacion(Delegacion):
     if Delegacion == "":
         print("Error en la delegacion")
         return 404
-    queryObtenerReportesDelegacion = f"select * from Reporte where Delegacion = '{Delegacion}' order by fecha,idReport desc;"
+    queryObtenerReportesDelegacion = f"select * from Reporte where Delegacion = '{Delegacion}' order by idReport desc;"
     try:
         cursor.execute(queryObtenerReportesDelegacion)
         results = cursor.fetchall()
@@ -215,7 +215,7 @@ def obtenerReportesDelegacionColonia(Delegacion,colonia):
     if Delegacion == "" and colonia == "":
         print("Error los datos")
         return 404
-    queryObtenerReportesDelegacionColonia = f"select * from Reporte where Delegacion = '{Delegacion}' and colonia like '%{colonia[1:]}' order by fecha,idReport desc;"
+    queryObtenerReportesDelegacionColonia = f"select * from Reporte where Delegacion = '{Delegacion}' and colonia like '%{colonia[1:]}' order by idReport desc;"
     try:
         cursor.execute(queryObtenerReportesDelegacionColonia)
         results = cursor.fetchall()
@@ -232,7 +232,7 @@ def obtenerReportesDelegacionEstatus(Delegacion,estatus):
     if Delegacion == ""and 6 < estatus < 0:
         print("Error en la delegacion")
         return 404
-    queryObtenerReportesDelegacionEstatus = f"select * from Reporte where Delegacion = '{Delegacion}' and status = {estatus} order by fecha,idReport desc;"
+    queryObtenerReportesDelegacionEstatus = f"select * from Reporte where Delegacion = '{Delegacion}' and status = {estatus} order by idReport desc;"
     try:
         cursor.execute(queryObtenerReportesDelegacionEstatus)
         results = cursor.fetchall()

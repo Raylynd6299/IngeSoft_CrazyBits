@@ -11,7 +11,7 @@ export default function Reporte(props) {
      
     let history = useHistory();
     //const {setUserUp,UserUp,setReloading} = props
-    const {UserUp,setReloading} = props
+    const {UserUp,setReloading,userType} = props
     const [formData, setFormData] = useState(formReportVoidForm());
     const [signUpLoading, setSignUpLoading] = useState(false)
     const [guardar, setguardar] = useState(null)
@@ -20,12 +20,15 @@ export default function Reporte(props) {
             setReloading(true)
             history.push("/")
         }
+        if (userType !== 0){
+            history.push("/")
+        }
         setFormData(formReportVoidForm())
         if (guardar !== null){
             setguardar(null)
             history.push("/Dashboard")
         }
-    }, [guardar])
+    }, [guardar,userType,UserUp])
     const onChange = e => {
         setFormData({ ...formData, [e.target.name]: e.target.value })
     }

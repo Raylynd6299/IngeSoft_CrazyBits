@@ -7,11 +7,15 @@ import LogoCDMX from "../../img/CDMX.png"
 
 export default function Dashboard(props){
     let history = useHistory()
-    const {UserUp,setReloading} = props
+    const {UserUp,setReloading,userType} = props
     const [reportes, setReportes] = useState(null)
     const [userInfo, setuserInfo] = useState({})
     useEffect(() => {
         if(UserUp === ""){
+            setReloading(true)
+            history.push("/")
+        }
+        if (userType !== 0){
             setReloading(true)
             history.push("/")
         }
@@ -25,7 +29,7 @@ export default function Dashboard(props){
         }).catch(() => {
             setReportes([]);
         })
-    }, [UserUp])
+    }, [UserUp,userType])
 
     return(
         <main role="main" className="flex-shrink-0 my-5 py-5">
@@ -62,13 +66,14 @@ export default function Dashboard(props){
 
 function Reporte(props){
     const {reporte} = props;
+    const estados = ["Recibido","Pendiente de validacion","Rechazado","Validado","En progreso de reparacion","Terminado"];
     return(
         <tr>
             <td>{reporte?.idReport}</td>
             <td>{reporte?.Delegacion}</td>
             <td>{reporte?.calle} {reporte?.numero},Col:{reporte?.colonia}, CP:{reporte?.CP}</td>
             <td>{reporte?.fecha}</td>
-            <td>{reporte?.status}</td>
+            <td>{estados[reporte?.status]}</td>
         </tr>
     )
 }

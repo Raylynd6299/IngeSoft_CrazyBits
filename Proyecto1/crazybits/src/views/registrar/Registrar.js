@@ -10,16 +10,20 @@ import LogoCDMX from "../../img/CDMX.png"
 //import logo from '../../img/brand/';
 export default function Registrar(props){
     let history = useHistory();
-    const {setUserUp,UserUp,setReloading} = props
+    const {setUserUp,UserUp,setReloading,userType, setUserType} = props
     const [formData, setFormData] = useState(formUserVoidForm());
     const [signUpLoading, setSignUpLoading] = useState(false)
 
     useEffect(() => {
         if(UserUp !== ""){
             setReloading(true)
-            history.push("/Reporte")
+            if (userType === 0){
+                history.push("/Reporte")
+            }else if(userType === 1){
+                history.push("/Reporte")
+            }
         }
-    }, [UserUp])
+    }, [UserUp,userType])
 
     const onChange = e => {
         setFormData({...formData,[e.target.name]:e.target.value})
@@ -51,6 +55,7 @@ export default function Registrar(props){
                         toast.success("El registro ha sido correcto")
                         setUserUp(formData.email)
                         setFormData(formUserVoidForm())
+                        setUserType(0)
                         history.push("/Dashboard")
                     }
                 }).catch(()=>{

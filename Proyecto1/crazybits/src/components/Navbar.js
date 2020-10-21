@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Dashboard from "../views/dashboard/Dashboard";
+import DashboardGestor from "../views/dashboardGestor/dashboardGestor";
 import Home from "../views/home/Home";
 import Login from "../views/login/Login";
 import Registrar from "../views/registrar/Registrar";
@@ -10,7 +11,7 @@ import Salir from "../views/salir/Salir"
 
 
 export default function Navbar(props){
-    const {UserUp,setUserUp,setReloading} = props;
+    const {UserUp,setUserUp,setReloading,userType, setUserType} = props;
     return (
         <Router>
             <header>
@@ -22,14 +23,19 @@ export default function Navbar(props){
                     </button>
                     <div className="collapse navbar-collapse" id="navbarCollapse">
                         <ul className="navbar-nav mr-auto">
-                            {UserUp !== "" && 
+                            {UserUp !== "" && userType === 0 &&
                             <li className="nav-item active">
                                 <Link className="nav-link" to="/Reporte">Registrar reporte <span className="sr-only">(current)</span></Link>
                             </li>
                             }
-                            {UserUp !== "" && 
+                            {UserUp !== "" && userType === 0 &&
                             <li className="nav-item active">
-                                <Link className="nav-link" to="/Dashboard">Dashboard</Link>
+                                <Link className="nav-link" to="/Dashboard">Tablero</Link>
+                            </li>
+                            }
+                            {UserUp !== "" && userType === 1 &&
+                            <li className="nav-item active">
+                                <Link className="nav-link" to="/DashboardGestor">Tablero Gestor</Link>
                             </li>
                             }
                         </ul>
@@ -57,11 +63,12 @@ export default function Navbar(props){
                 
             </header>
             <Route path='/' exact component={() => <Home UserUp={UserUp} setUserUp={setUserUp} setReloading={setReloading}/>}/>
-            <Route path='/Dashboard' exact component={() => <Dashboard UserUp={UserUp} setUserUp={setUserUp} setReloading={setReloading}/>}/>
-            <Route path='/Registrar' exact component={() => <Registrar UserUp={UserUp} setUserUp={setUserUp} setReloading={setReloading}/>}/>
-            <Route path='/Reporte' exact component={() => <Reporte UserUp={UserUp} setUserUp={setUserUp} setReloading={setReloading}/>}/>
-            <Route path='/Login' exact component={() => <Login UserUp={UserUp} setUserUp={setUserUp} setReloading={setReloading}/>}/>
-            <Route path='/out' exact component={() => <Salir UserUp={UserUp} setUserUp={setUserUp} setReloading={setReloading}/>}/>
+            <Route path='/Dashboard' exact component={() => <Dashboard UserUp={UserUp} setUserUp={setUserUp} setReloading={setReloading} userType={userType}/>}/>
+            <Route path='/DashboardGestor' exact component={() => <DashboardGestor UserUp={UserUp} setUserUp={setUserUp} setReloading={setReloading} userType={userType}/>}/>
+            <Route path='/Registrar' exact component={() => <Registrar UserUp={UserUp} setUserUp={setUserUp} setReloading={setReloading} userType={userType}/>}/>
+            <Route path='/Reporte' exact component={() => <Reporte UserUp={UserUp} setUserUp={setUserUp} setReloading={setReloading} userType={userType} setUserType={setUserType}/>}/>
+            <Route path='/Login' exact component={() => <Login UserUp={UserUp} setUserUp={setUserUp} setReloading={setReloading} userType={userType} setUserType={setUserType}/>}/>
+            <Route path='/out' exact component={() => <Salir UserUp={UserUp} setUserUp={setUserUp} setReloading={setReloading} userType={userType} setUserType={setUserType}/>}/>
         </Router>
     );
 }

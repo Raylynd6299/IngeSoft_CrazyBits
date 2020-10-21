@@ -6,7 +6,7 @@ import {useHistory} from "react-router-dom"
 
 export default function Salir(props){
     let history = useHistory()
-    const {setUserUp,setReloading} = props
+    const {setUserUp,setReloading, setUserType} = props
     useEffect(() => {
         SalirUsuario().then(response => {
             if(response.status === 404){
@@ -17,6 +17,7 @@ export default function Salir(props){
         }).finally(()=>{
             setUserUp("")
             setReloading(true)
+            setUserType(null)
             history.push("/")
         })
     }, [])

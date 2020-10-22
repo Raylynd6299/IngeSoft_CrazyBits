@@ -32,6 +32,7 @@ export default function DashboardGestor(props){
         getUserApi(UserUp).then((response) => {
             
             setuserInfo(response)
+            settipoRepos({tipo:0,params:{}})
         })
         
         
@@ -80,19 +81,14 @@ export default function DashboardGestor(props){
                     <h3 className="my-1 py-1 h4">Nombre: {userInfo?.Usuario?.nombre} {userInfo?.Usuario?.apellidoPaterno} {userInfo?.Usuario?.apellidoMaterno} </h3>
                     <h3 className="my-1 py-1 h4">Correo: {userInfo?.Usuario?.email}</h3>
                     <h3 className="my-1 py-1 h4">Alcaldia: {userInfo?.Usuario?.Delegacion}</h3>
-                    <p className="lead text-justify my-1 py-1">Aqui puede visualizar los reportes creados por usted y visualizar su status.</p>
+                    <p className="text-justify my-1 py-1">Aqui puede visualizar los reportes creados por los Usuarios, que corespondan a su delegacion asignada, y gestionar su estado.</p>
                     
-                    <Row>
-                        <Col>
-                            <h2 className=" h2 my-3">Historial de Reportes</h2>
-                        </Col>
-                    </Row>
                     <Row>
                         <Col>
                             <h3>Filtros:</h3>
                         </Col>
                         <Col>
-                            <Button onClick={()=>{setShowModal2(true); settipoform(0)}}>Sin filtros</Button>
+                            <Button onClick={()=>{settipoRepos({tipo:0,params:{}}); }}>Sin filtros</Button>
                         </Col>
                         <Col>
                             <Button onClick={()=>{setShowModal2(true); settipoform(1)}}>Por Colonia</Button>

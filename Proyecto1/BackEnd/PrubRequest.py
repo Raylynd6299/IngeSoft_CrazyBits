@@ -24,12 +24,12 @@ def AltaUsuario_Test():
     print(requests.post('http://localhost:9000/AltaUsuario',data={"nombre":"Prueba",
                                                                   "apellidoPaterno":"prueba2",
                                                                   "apellidoMaterno":"prueba3",
-                                                                  "email":"correoprueba2@gmail.com",
+                                                                  "email":"ray@gmail.com",
                                                                   "FeNa":"1999-12-31",
-                                                                  "Password":"Passssss",
+                                                                  "Password":"Raymundo",
                                                                   "CURP":"CURPPPPPPPPPPPPP",
-                                                                  "Tipo":0,
-                                                                  "Delegacion":"GAM"
+                                                                  "Tipo":1,
+                                                                  "Delegacion":"Gustavo A. Madero"
                                                             }).json())
 
 def CambiarEstado_Test():

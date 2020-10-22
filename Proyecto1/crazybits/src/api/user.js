@@ -89,8 +89,7 @@ export function ObtenerReportesGestorColonia(paramsfiltro){
 }
 
 export function ObtenerReportesGestorEstatus(paramsfiltro){
-    const url = `${API_HOST}/ObtenerReportesDelegacionColonia?Delegacion=${paramsfiltro?.Delegacion}&estatus=${paramsfiltro?.estatus}`;
-    //const url = `${API_HOST}/ObtenerReportesDelegacionEstatus?Delegacion=Milpa Alta&estatus=${paramsfiltro?.estatus}`;
+    const url = `${API_HOST}/ObtenerReportesDelegacionEstatus?Delegacion=${paramsfiltro?.Delegacion}&estatus=${paramsfiltro?.estatus}`;
 
     const params = {
         headers:{
@@ -111,8 +110,8 @@ export function ObtenerReportesGestorEstatus(paramsfiltro){
 }
 
 export function ObtenerReportesGestorFecha(paramsfiltro){
-    const url = `${API_HOST}/ObtenerReportesDelegacionColonia?Delegacion=${paramsfiltro?.Delegacion}&fecha=${paramsfiltro?.fecha}`;
-    //const url = `${API_HOST}/ObtenerReportesDelegacionFecha?Delegacion=Milpa Alta&fecha=${paramsfiltro?.fecha}`;
+   
+    const url = `${API_HOST}/ObtenerReportesDelegacionFecha?Delegacion=${paramsfiltro?.Delegacion}&fecha=${paramsfiltro?.fecha}`;
 
     const params = {
         headers:{

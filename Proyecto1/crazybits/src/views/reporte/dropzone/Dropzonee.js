@@ -167,7 +167,7 @@ export default function Dropzonee(props) {
         <div className="container2">
                 {unsupportedFiles.length === 0 && validFiles.length ? <button className="file-upload-btn" onClick={() => uploadFiles()}>Upload Files</button> : ''} 
                 {unsupportedFiles.length ? <p>Please remove all unsupported files.</p> : ''}
-                <div className="drop-container my-2"
+                <div className="drop-container my-2 py-5"
                     onDragOver={dragOver}
                     onDragEnter={dragEnter}
                     onDragLeave={dragLeave}

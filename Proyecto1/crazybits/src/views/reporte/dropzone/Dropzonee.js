@@ -151,7 +151,7 @@ export default function Dropzonee(props) {
                 },
             })
                 .catch(() => {
-                    uploadRef.current.innerHTML = `<span class="error">Error Uploading File(s)</span>`;
+                    uploadRef.current.innerHTML = `<span class="error my-3 text-center">Error al subir las fotos <br/> Intente nuevamente</span>`;
                     progressRef.current.style.backgroundColor = 'red';
                 })
         }
@@ -165,8 +165,8 @@ export default function Dropzonee(props) {
     return (
         <>
         <div className="container2">
-                {unsupportedFiles.length === 0 && validFiles.length ? <button className="file-upload-btn" onClick={() => uploadFiles()}>Upload Files</button> : ''} 
-                {unsupportedFiles.length ? <p>Please remove all unsupported files.</p> : ''}
+                {unsupportedFiles.length === 0 && validFiles.length ? <button className="file-upload-btn" onClick={() => uploadFiles()}>Subir fotos</button> : ''} 
+                {unsupportedFiles.length ? <p>Por favor remueva los archivos que no sean imagenes.</p> : ''}
                 <div className="drop-container my-2 py-5"
                     onDragOver={dragOver}
                     onDragEnter={dragEnter}
@@ -176,7 +176,7 @@ export default function Dropzonee(props) {
                 >
                     <div className="drop-message my-1">
                         <div className="upload-icon"></div>
-                        Drag & Drop files here or click to select file(s)
+                        Arrastre y suelte los archivos o seleccione aquí para escoger una foto.
                     </div>
                     <input
                         ref={fileInputRef}

@@ -7,6 +7,7 @@ import {useHistory} from "react-router-dom";
 import { generarReporte } from "../../api/reports"
 import LogoCDMX from "../../img/CDMX.png"
 
+import Dropzonee from "./dropzone/Dropzonee"
 export default function Reporte(props) {
      
     let history = useHistory();
@@ -145,8 +146,10 @@ export default function Reporte(props) {
                             {!signUpLoading ? "Reportar" : <Spinner animation="border"/>}
                         </Button>
                     </Form>
+                    
                 </div>
             </div>
+            <Dropzonee/>
         </div>
     );
 }

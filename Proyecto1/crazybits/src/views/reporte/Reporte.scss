@@ -1,0 +1,29 @@
+.banner{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 180px;
+    background-size: cover;
+    background-position: center ;
+    background-repeat: no-repeat;
+    padding: -20px !important;
+
+    border-style: dotted;
+    border-width: 1px;
+    border-color: 660033;
+    background-color: cc3366;
+    font-family: verdana, arial;
+    font-size: 10pt;
+
+    &:hover{
+        cursor: pointer;
+    }
+    svg {
+        width: 30px;
+        fill: #fff;
+        &:hover{
+            fill: #000;
+        }
+    }
+    
+}

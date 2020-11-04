@@ -22,6 +22,29 @@ export function getUserApi(email){
     })
 }
 
+export function uploadImageApi(file){
+    const url = `${API_HOST}/SubirFotos`;
+    const formData = new FormData();
+    console.log(file.name)
+    console.log(file)
+    formData.append(file.name,file)
+    const params = {
+       method:"POST",
+       headers:{
+       },
+       body:formData
+   }
+
+   return fetch(url,params).then(response => {
+       return response;
+   }).then(result => {
+       return result;
+   }).catch(err => {
+       return err;
+   });
+   
+}
+
 export function ObtenerReportesUsuario(email){
     const url = `${API_HOST}/ObtenerReportesUsuario?emailUser=${email}`;
 

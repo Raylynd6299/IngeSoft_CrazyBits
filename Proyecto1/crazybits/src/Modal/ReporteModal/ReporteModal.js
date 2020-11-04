@@ -1,11 +1,13 @@
 import React from 'react';
-import {Modal,Button} from "react-bootstrap";
+import {Modal,Button,Row,Image,Col} from "react-bootstrap";
 import {cambiarStatusReport} from "../../api/reports"
+import {API_HOST} from "../../utils/constant"
+
 
 export default function ReporteModal(props) {
     const {show,setShow,reporte,reload, setreload} = props;
 
-    
+    console.log(reporte)
 
     return (
         <Modal className="report-modal" show={show} onHide={()=> setShow(false)} centered size="lg">
@@ -21,11 +23,30 @@ export default function ReporteModal(props) {
                 
                 <h3>Descripcion:</h3>
                 <h6>{reporte?.descripcion}</h6>
+                <Row className="justify-content-md-center">
+                    <Imageness fotos={reporte?.fotos}/>
+                </Row>
             </Modal.Body>
             <Modal.Footer>
                 <Botones status={reporte?.status} idReport={reporte?.idReport} setShow={setShow} reload={reload} setreload={setreload}/>
             </Modal.Footer>
         </Modal>
+    )
+}
+function Imageness(props){
+    const{fotos} = props
+    if (fotos !== "") {
+        return(
+            <Col xs={6} md={4}>
+                <Image rounded  fluid  className="mr-3" src={
+                    fotos ? `${API_HOST}/ObtenerFoto?imagen=${fotos}`:"ImagenNotFound"
+                } alt = "Bache"/>
+            </Col>
+        )
+    }
+    return(
+        <>
+        </>
     )
 }
 function Botones(props){

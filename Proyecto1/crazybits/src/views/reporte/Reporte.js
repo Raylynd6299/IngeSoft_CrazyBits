@@ -1,13 +1,19 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState,useEffect,useCallback } from 'react';
 import { Form, Button, Col, Row, Spinner } from "react-bootstrap";
 //import { generarReporte } from "../../api/reports";
 import { values, size } from "lodash";
 import { toast } from "react-toastify";
 import {useHistory} from "react-router-dom";
 import { generarReporte } from "../../api/reports"
+import { uploadImageApi } from "../../api/user"
 import LogoCDMX from "../../img/CDMX.png"
+import { useDropzone} from "react-dropzone"
+import Camara from "../../img/camara.png"
 
-import Dropzonee from "./dropzone/Dropzonee"
+import "./Reporte.scss"
+
+//
+
 export default function Reporte(props) {
      
     let history = useHistory();
@@ -16,6 +22,11 @@ export default function Reporte(props) {
     const [formData, setFormData] = useState(formReportVoidForm());
     const [signUpLoading, setSignUpLoading] = useState(false)
     const [guardar, setguardar] = useState(null)
+
+    //const [bannerUrl, setBannerUrl] = useState(user?.banner ? `${API_HOST}/obtenerBanner?id=${user.id}`:null)
+    //const [bannerFile, setBannerFile] = useState(null)
+    const [imageFile, setImageFile] = useState(null)
+    
     useEffect(() => {
         if(UserUp === ""){
             setReloading(true)
@@ -30,10 +41,31 @@ export default function Reporte(props) {
             history.push("/Dashboard")
         }
     }, [guardar,userType,UserUp])
+
+    const onDropImage = useCallback(acceptedFile => {
+        const file = acceptedFile[0];
+        // setBannerUrl(URL.createObjectURL(file))
+        setImageFile(file)
+    })
+    const {getRootProps: getRootImageProps,getInputProps:getInputImageProps} = useDropzone({
+        accept: "image/png, image/jpeg, image/jpg",
+        noKeyboard:true,
+        multiple:false,
+        onDrop: onDropImage
+    });
+
+    const SubiImagenn = async () =>{
+        if (imageFile) {
+            await uploadImageApi(imageFile).catch(()=>{
+                toast.error("Error al subir el nuevo banner");
+            })
+        }
+    }
+
     const onChange = e => {
         setFormData({ ...formData, [e.target.name]: e.target.value })
     }
-    const onSubmit = e => {
+    const onSubmit = async (e) => {
         e.preventDefault();
         
         let validCount = 0
@@ -53,6 +85,7 @@ export default function Reporte(props) {
                     toast.warning(response.message)
                 }else{
                     toast.success("El registro ha sido correcto")
+                    SubiImagenn()
                     setguardar("listo")
                 }
             }).catch(()=>{
@@ -137,8 +170,15 @@ export default function Reporte(props) {
                                 <Col>
                                     <Form.Group>
                                         <Form.Label>Descripción</Form.Label>
-                                        <Form.Control as="textarea"  rows="6" placeholder="Descripcion" name="descripcion" defaultValue={formData.descripcion}/>
+                                        <Form.Control as="textarea"  rows="7" placeholder="Descripcion" name="descripcion" defaultValue={formData.descripcion}/>
                                     </Form.Group>
+                                </Col>
+                                <Col>
+                                    <Form.Label>Fotografias del Bache</Form.Label>
+                                    <div className="banner" {...getRootImageProps()}>
+                                        <input type="file" {...getInputImageProps()} />
+                                        <img className="d-block mx-auto" src={Camara} alt="CDMX" width="25%"/>
+                                    </div>
                                 </Col>
                             </Row>
                         </Form.Group>
@@ -149,7 +189,6 @@ export default function Reporte(props) {
                     
                 </div>
             </div>
-            <Dropzonee/>
         </div>
     );
 }

@@ -1,0 +1,104 @@
+\chapter{Requerimientos}
+
+\section{Requerimientos funcionales}
+
+\begin{longtable}{|m{1.5cm}|m{3cm}|m{5cm}|m{2cm}| m{2cm}|}
+        \rowcolor[HTML]{3531FF} 
+        {\color[HTML]{FFFFFF} Id} &{\color[HTML]{FFFFFF}Nombre} & {\color[HTML]{FFFFFF} Descripción}\\
+        \hline
+        \endfirsthead
+        % aquí añadimos el encabezado del resto de hojas.
+        \hline
+        \rowcolor[HTML]{3531FF} 
+        {\color[HTML]{FFFFFF} Id} &{\color[HTML]{FFFFFF}Nombre} & {\color[HTML]{FFFFFF} Descripción}\\
+        \hline 
+        \endhead
+        % aquí añadimos el fondo de todas las hojas, excepto de la última.
+        \multicolumn{5}{c}{Sigue en la página siguiente.}
+        \endfoot
+        % aquí añadimos el fondo de la última hoja.
+        \endlastfoot
+        
+        RF01 & Procesos & El sistema debe acoplarse a los procesos de la Secretaría de Obras. \\ \hline
+        
+        RF02 & Reportes & Los reportes de los baches deben incluir: la ubicación exacta del bache, fotografía del mismo, descripción, fecha del reporte y en dado caso que hayan causado un daño en el vehículo del usuario una foto de la evidencia del daño, descripción del mismo, y los datos del propietario del mismo.  \\ \hline
+        RF03 & Datos del ciudadano & Los datos que se recibirán del ciudadano son: correo electrónico, nombre, placas y edad.  \\ \hline
+        
+        RF04 & Estado de solicitud & Los ciudadanos de la Ciudad de México podrán ver el estado de sus solicitud de reparación de bache y/o daños.\\ \hline
+        
+        RF05 & Verificación de baches &  Los analista de reportes de la CDMX  deberán recibir notificaciones de los baches que va a verificar y la ubicación exacta de los mismo.  \\ \hline
+        
+        RF06 & Evaluación & El analista de reportes debe poder mandar su evaluación del bache, para poder seguir con el proceso del mismo.\\ \hline
+        
+        RF07 & Recepción de reportes & Lo gestores de reportes, permisionarios y aseguradoras deben poder visualizar la información de los baches de manera organizada, y puede buscarlos por los siguientes parámetros: alcaldía, vialidad y fecha.  \\ \hline
+        
+        RF08 & Seguimiento & Los gestores de reportes podrán dar seguimiento al proceso de reparación de baches. \\ \hline
+        
+        RF09 & Estado de reportes & El estado de los reportes podrá pasar entre: recibido, en revisión, en reparación, y reparado.   \\ \hline
+        
+        RF10 & Informes & La Secretaría de Obras y Servicios, los permisionarios la aseguradora deberá poder visualizar gráficos y conteos de los reportes de baches que se han recibido al mes y de los que sí fueron arreglados. \\ \hline
+        
+        RF11 & Daños & El gestor deberá recibir los datos de las personas que han sufrido daños en su coche, para poder dar seguimiento a ese proceso. \\\hline
+        
+        RF12 & Reparadores & El reparador debe recibir la ubicación exacta del bache a reparar, y debe notificar cuando el bache está completamente reparado, dejando como "reparado" el estado del reporte. \\\hline
+        
+        RF13 & Login & Tanto el ciudadano, analistas, gestores, permisionario y aseguradora deben tener un usuario y contraseña para ingresar al sistema. \\ \hline
+        
+        RF14 & Almacenamiento & Se deben almacenar en una base de datos los reportes,  los usuarios y contraseñas. \\ \hline
+        
+        RF15 & Eliminar & El gestor de reporte podrá eliminar los reportes. \\ \hline
+        
+        RF16 & Datos de aseguradoras & La Secretaría de Obras y Servicios de la CDMX debe poder ver el periodo del contrato, datos fiscales, datos de contacto, empleados o usuarios de la aseguradora.  \\ \hline
+        
+        RF17 & Datos de permisionarios &  La Secretaría de Obras y Servicios de la CDMX debe poder ver los datos fiscales, de contacto y de los usuarios, alcaldías que tiene a su cargo y el periodo del servicio contratado.     \\ \hline
+        
+        RF18 & Pagos & La Secretaría de Obras y Servicios de la CDMX debe saber cuanto se le debe pagar mensualmente a cada permisionario.  \\ \hline
+    \caption{Requerimientos funcionales}
+    \label{tab:RF}
+\end{longtable}
+
+\section{Requerimientos no funcionales}
+
+
+\begin{longtable}{|m{1.5cm}|m{3cm}|m{5cm}|m{2cm}| m{2cm}|}
+        \rowcolor[HTML]{3531FF} 
+        {\color[HTML]{FFFFFF} Id} &{\color[HTML]{FFFFFF}Nombre} & {\color[HTML]{FFFFFF} Descripción}\\
+        \hline
+        \endfirsthead
+        % aquí añadimos el encabezado del resto de hojas.
+        \hline
+        \rowcolor[HTML]{3531FF} 
+        {\color[HTML]{FFFFFF} Id} &{\color[HTML]{FFFFFF}Nombre} & {\color[HTML]{FFFFFF} Descripción}\\
+        \hline 
+        \endhead
+        % aquí añadimos el fondo de todas las hojas, excepto de la última.
+        \multicolumn{5}{c}{Sigue en la página siguiente.}
+        \endfoot
+        % aquí añadimos el fondo de la última hoja.
+        \endlastfoot
+        
+        RFN01 &  Seguridad de datos & El sistema debe desarrollarse bajo la norma ISO 27001 y la NOM-151-SCFI-2016 \\ \hline
+        
+        RFN02 & Navegadores & La aplicación web debe poder funcionar en los siguientes navegadores: Google Chrome, Mozilla, Firefox, Opera y Safari. \\ \hline
+        
+        RFN03 & Responsiva & La aplicación Web debe adaptarse a las dimensiones del dispositivo del que se vea. \\ \hline
+        
+        RFN04 & Herramientas & El desarrollo de la aplicación web se hará con HTML, CSS, JavaScript utilizando NodeJS y ReactJS. Y el servicio será desarrollado con python3. \\ \hline
+        
+        RFN05 & Ubicaciones & El manejo de ubicaciones será mediante la API de Google Maps. \\ \hline
+        
+        RNF06 & Datos & Los datos modificados (estado) deben ser actualizado en al menos 2 segundos. \\ \hline
+        
+        RNF07 & Respaldo & Las bases de datos deben respaldarse cada dos días. \\ \hline
+        
+        RNF08 & Encriptado de datos & Toda la información ingresada y almacenada sera encriptada mediante sha256.   \\ \hline
+        
+        RNF09 & Manuales &  Los manuales de usuario deben de estar estructurados adecuadamente de manera física y dentro del sistema. \\ \hline
+        
+        RNF10 & Interfaces & Las interfaces gráficas deben de estar bien formadas y con diseño similar al del gobierno de la CDMX. \\ \hline
+        
+        RFF11 & Mensajes de error & Los mensajes de errores deben de ser informativos y orientados al usuario final. \\ \hline
+        
+    \caption{Requerimientos no funcionales}
+    \label{tab:RNF}
+\end{longtable}
